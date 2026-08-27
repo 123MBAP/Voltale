@@ -5,7 +5,7 @@ export const services = [
     text: 'Custom web, mobile, and enterprise applications built with modern architectures. Scalable platforms that integrate seamlessly with your existing ecosystem.',
     detail: 'We design and build software that drives business outcomes. From responsive web applications to native mobile experiences and complex enterprise platforms, our engineering teams use modern architectures, clean code practices, and continuous delivery to ship reliable solutions. Every project is built with scalability, security, and maintainability as first-class concerns.',
     capabilities: ['Full-stack web development', 'Mobile app development (iOS & Android)', 'Enterprise system integration', 'Cloud-native application architecture', 'API design and development', 'Legacy system modernization'],
-    images: ['hero-tech.jpg', 'services-data.jpg', 'about-circuit.jpg'],
+    images: ['hero-tech.png', 'services-data.jpg', 'about-circuit.jpg'],
   },
   {
     index: '02',
@@ -13,7 +13,7 @@ export const services = [
     text: 'Online presence development, brand positioning, and data-driven marketing strategies. Technology-powered promotion that connects audiences with purpose.',
     detail: 'We build digital experiences that connect brands with their audiences. From website development and e-commerce platforms to SEO strategy and data-driven marketing campaigns, we combine creative design with technology to deliver measurable results.',
     capabilities: ['Website & e-commerce development', 'SEO & content strategy', 'Data-driven marketing campaigns', 'Brand digital presence', 'Analytics & conversion optimization', 'Marketing automation'],
-    images: ['services-data.jpg', 'about-circuit.jpg', 'hero-tech.jpg'],
+    images: ['services-data.jpg', 'about-circuit.jpg', 'hero-tech.png'],
   },
   {
     index: '03',
@@ -21,7 +21,7 @@ export const services = [
     text: 'Connected device ecosystems, sensor networks, and intelligent automation for industrial and commercial environments. End-to-end IoT architecture from edge to cloud.',
     detail: 'We deliver end-to-end IoT solutions that connect the physical and digital worlds. Our expertise spans embedded systems, sensor networks, edge computing, and cloud-based device management. We help organizations collect, process, and act on data from connected devices to optimize operations, reduce costs, and enable new business models.',
     capabilities: ['Embedded system development', 'Sensor network architecture', 'Edge computing solutions', 'IoT cloud platforms', 'Real-time data processing', 'Industrial automation systems'],
-    images: ['services-data.jpg', 'hero-tech.jpg', 'approach-glow.jpg'],
+    images: ['services-data.jpg', 'hero-tech.png', 'approach-glow.jpg'],
   },
   {
     index: '04',
@@ -29,7 +29,7 @@ export const services = [
     text: 'End-to-end process redesign and automation solutions. Workflow optimization, robotic process automation, and legacy system modernization to accelerate operations.',
     detail: 'We help organizations reimagine their operations through digital transformation. By combining process expertise with technology, we identify automation opportunities, redesign workflows, and implement solutions that drive efficiency, reduce errors, and free up talent for higher-value work.',
     capabilities: ['Business process analysis', 'Robotic process automation', 'Workflow orchestration', 'Legacy system migration', 'Digital workplace solutions', 'Change management & training'],
-    images: ['about-circuit.jpg', 'approach-glow.jpg', 'hero-tech.jpg'],
+    images: ['about-circuit.jpg', 'approach-glow.jpg', 'hero-tech.png'],
   },
   {
     index: '05',
@@ -37,7 +37,7 @@ export const services = [
     text: 'Secure, resilient network architecture and cloud infrastructure. System integration services that unify disparate platforms into a coherent operational backbone.',
     detail: 'We design, deploy, and manage the infrastructure that powers modern organizations. From secure network architectures and cloud environments to hybrid infrastructure and system integration, we ensure your technology backbone is resilient, scalable, and aligned with your business goals.',
     capabilities: ['Network architecture & security', 'Cloud infrastructure (AWS, Azure, GCP)', 'Hybrid & multi-cloud solutions', 'System integration', 'Cybersecurity assessments', '24/7 managed infrastructure services'],
-    images: ['hero-tech.jpg', 'services-data.jpg', 'about-circuit.jpg'],
+    images: ['hero-tech.png', 'services-data.jpg', 'about-circuit.jpg'],
   },
   {
     index: '06',
@@ -45,7 +45,7 @@ export const services = [
     text: 'Machine learning models, predictive analytics, and data visualization. Turning raw information into actionable intelligence that drives strategic decisions.',
     detail: 'We help organizations unlock the value of their data through artificial intelligence and advanced analytics. Our data scientists and engineers build custom machine learning models, develop predictive analytics solutions, and create intuitive data visualizations that transform raw data into strategic assets.',
     capabilities: ['Machine learning model development', 'Predictive analytics', 'Data engineering & pipelines', 'Business intelligence dashboards', 'Natural language processing', 'Computer vision solutions'],
-    images: ['approach-glow.jpg', 'hero-tech.jpg', 'services-data.jpg'],
+    images: ['approach-glow.jpg', 'hero-tech.png', 'services-data.jpg'],
   },
   {
     index: '07',

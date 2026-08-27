@@ -76,29 +76,30 @@ function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-ink text-mist pt-32 pb-16 sm:pt-40 sm:pb-24 line-figures-dark">
       {/* Decorative Glowing Ambience Blobs */}
-      <div className="absolute left-[10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-taupe/10 blur-[100px] animate-driftWide" />
-      <div className="absolute right-[10%] bottom-[10%] -z-10 h-96 w-96 rounded-full bg-stone/15 blur-[120px] animate-floatSoft" />
+      <div className="absolute left-[10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-taupe/10 blur-[100px]" />
+      <div className="absolute right-[10%] bottom-[10%] -z-10 h-96 w-96 rounded-full bg-stone/15 blur-[120px]" />
 
       <div className="relative z-10 mx-auto grid min-h-[80vh] w-full max-w-7xl gap-12 px-5 pb-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-10 lg:pb-16 items-center">
-        <div className="flex flex-col justify-between gap-12">
-          <div className="max-w-2xl">
+        <div className="flex flex-col justify-between gap-12 text-center lg:text-left">
+          <div className="max-w-2xl mx-auto lg:mx-0">
             <Reveal delay={60}>
-              <div className="flex items-center gap-4">
-                <span className="h-px w-8 bg-white/20" />
-                <p className="text-[10px] uppercase tracking-[0.46em] text-white/50 font-medium">
+              <div className="flex items-center justify-center lg:justify-start gap-4">
+                <span className="h-px w-4 bg-white/20 sm:w-8" />
+                <p className="text-[10px] uppercase tracking-[0.46em] text-white/50 font-medium text-center lg:text-left">
                   Powering the stories of tomorrow through innovation
                 </p>
+                <span className="h-px w-4 bg-white/20 sm:w-8 lg:hidden" />
               </div>
             </Reveal>
 
             <Reveal delay={140}>
-              <h1 className="mt-8 max-w-[12ch] font-display text-[clamp(3.5rem,10vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.07em] text-white">
+              <h1 className="mt-8 max-w-[12ch] font-display text-[clamp(2.75rem,10vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.07em] text-white text-center lg:text-left mx-auto lg:mx-0">
                 Voltale
               </h1>
             </Reveal>
 
             <Reveal delay={220}>
-              <p className="mt-6 max-w-lg text-sm leading-8 text-white/70 sm:text-base">
+              <p className="mt-6 max-w-lg text-sm leading-8 text-white/70 sm:text-base text-center lg:text-left mx-auto lg:mx-0">
                 We help businesses transform through software development, IoT solutions, 
                 digital transformation, AI, and IT infrastructure. From connected devices 
                 to enterprise software, Voltale delivers integrated solutions across seven 
@@ -106,8 +107,30 @@ function Hero() {
               </p>
             </Reveal>
 
+            {/* Mobile-only 2-column images row */}
+            <Reveal delay={260}>
+              <div className="mt-8 grid grid-cols-2 gap-4 lg:hidden max-w-lg mx-auto">
+                <div className="overflow-hidden border border-white/10 rounded aspect-[4/3] relative group">
+                  <img 
+                    src="/images/hero-tech.png" 
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
+                    alt="Innovative technology chip visualization representing Voltale core domains"
+                  />
+                  <div className="absolute inset-0 bg-ink/35 mix-blend-multiply" />
+                </div>
+                <div className="overflow-hidden border border-white/10 rounded aspect-[4/3] relative group">
+                  <img 
+                    src="/images/services-data.jpg" 
+                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
+                    alt="Data analytics and processing visual representation"
+                  />
+                  <div className="absolute inset-0 bg-ink/35 mix-blend-multiply" />
+                </div>
+              </div>
+            </Reveal>
+
             <Reveal delay={300}>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
                 <a
                   href="#contact"
                   className="group relative overflow-hidden bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] text-[#111111] transition-all hover:bg-white/90 hover:shadow-lg"
@@ -126,16 +149,16 @@ function Hero() {
           </div>
 
           <Reveal delay={360}>
-            <div className="flex flex-wrap items-end gap-8 border-t border-white/10 pt-6 text-[9px] uppercase tracking-[0.42em] text-white/40 sm:gap-12">
-              <div className="flex flex-col gap-1.5">
+            <div className="flex flex-wrap justify-center lg:justify-start items-center lg:items-end gap-8 border-t border-white/10 pt-6 text-[9px] uppercase tracking-[0.42em] text-white/40 sm:gap-12">
+              <div className="flex flex-col gap-1.5 items-center lg:items-start text-center lg:text-left">
                 <span className="text-white/40">Location</span>
                 <span className="text-xs font-semibold tracking-[0.15em] text-white">Kigali, Rwanda</span>
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1.5 items-center lg:items-start text-center lg:text-left">
                 <span className="text-white/40">Focus</span>
                 <span className="text-xs font-semibold tracking-[0.15em] text-white">Technology / Strategy</span>
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-1.5 items-center lg:items-start text-center lg:text-left">
                 <span className="text-white/40">Signal</span>
                 <span className="text-xs font-semibold tracking-[0.15em] text-white">Precise, innovative, enduring</span>
               </div>
@@ -173,7 +196,7 @@ function Hero() {
 // Enhanced About Section
 function AboutSection() {
   return (
-    <section id="about" className="bg-white text-ink py-4 md:py-6 line-figures-light">
+    <section id="about" className="bg-white text-ink py-16 md:py-24 line-figures-light">
       <div className="mx-auto grid w-full max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
         
         {/* Left Column: Heading, Description & Image */}
@@ -254,7 +277,7 @@ function SolutionsSection() {
   };
 
   return (
-    <section id="solutions" className="border-t border-[#2B2B2B]/10 bg-[#F8F8F6] py-4 md:py-6">
+    <section id="solutions" className="border-t border-[#2B2B2B]/10 bg-[#F8F8F6] py-16 md:py-24">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-14">
           <div>
@@ -285,7 +308,7 @@ function SolutionsSection() {
 
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-start">
           {/* Left Details Panel */}
-          <div className="flex flex-col justify-between h-full min-h-[460px]">
+          <div className="flex flex-col justify-between h-full lg:min-h-[460px]">
             <div>
               <span className="font-display text-5xl leading-none tracking-[-0.06em] text-graphite/15 sm:text-7xl">
                 {activeSolution.index}
@@ -335,7 +358,7 @@ function SolutionsSection() {
             {activeTab === 0 ? (
               /* Haficonnect Tab Showcase */
               <div className="flex flex-col gap-4">
-                <div className="flex gap-2 border-b border-[#2B2B2B]/10 pb-3">
+                <div className="flex flex-wrap gap-2 border-b border-[#2B2B2B]/10 pb-3">
                   {hafiImages.map((tab, idx) => (
                     <button
                       key={tab.label}
@@ -396,14 +419,14 @@ function SolutionsSection() {
                   </a>
                 </div>
                 
-                <div className="w-full overflow-hidden border border-[#2B2B2B]/10 rounded" style={{ height: '380px' }}>
+                <div className="w-full overflow-hidden border border-[#2B2B2B]/10 rounded h-[300px] sm:h-[380px]">
                   <iframe
                     src="https://enyandiko.vercel.app"
-                    className="w-full h-[500px]"
+                    className="w-full h-[400px] sm:h-[500px] pointer-events-none lg:pointer-events-auto"
                     title="E-Nyandiko Platform"
                     loading="lazy"
                     sandbox="allow-scripts allow-same-origin allow-forms"
-                    style={{ border: 'none', marginTop: '-60px' }}
+                    style={{ border: 'none', marginTop: '-40px' }}
                   />
                 </div>
               </div>
@@ -418,7 +441,7 @@ function SolutionsSection() {
 // Enhanced Services Section
 function ServicesSection() {
   return (
-    <section id="services" className="bg-white text-ink py-4 md:py-6 line-figures-light">
+    <section id="services" className="bg-white text-ink py-16 md:py-24 line-figures-light">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="max-w-2xl mb-16">
           <div className="flex items-center gap-3 mb-2">
@@ -482,7 +505,7 @@ function ServicesSection() {
 // Enhanced Industries Section
 function IndustriesSection() {
   return (
-    <section className="bg-[#F8F8F6] text-ink py-4 md:py-6 border-t border-[#2B2B2B]/10">
+    <section className="bg-[#F8F8F6] text-ink py-16 md:py-24 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="max-w-2xl mb-14">
           <div className="flex items-center gap-3 mb-2">
@@ -518,7 +541,7 @@ function IndustriesSection() {
 // Enhanced Testimonials Section
 function TestimonialsSection() {
   return (
-    <section className="bg-white text-ink py-4 md:py-6 border-t border-[#2B2B2B]/10">
+    <section className="bg-white text-ink py-16 md:py-24 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="max-w-2xl mb-14">
           <div className="flex items-center gap-3 mb-2">
@@ -564,7 +587,7 @@ function TestimonialsSection() {
 // Enhanced Approach Section
 function ApproachSection() {
   return (
-    <section id="approach" className="bg-[#F8F8F6] text-ink py-4 md:py-6 border-t border-[#2B2B2B]/10">
+    <section id="approach" className="bg-[#F8F8F6] text-ink py-16 md:py-24 border-t border-[#2B2B2B]/10">
       <div className="mx-auto grid w-full max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
         <SectionHeading
           label="Our approach"
@@ -649,9 +672,9 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-ink text-white py-4 md:py-6 border-t border-white/5 line-figures-dark">
-      <div className="absolute -right-[20%] -top-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-blue-500/5 blur-[100px] animate-driftWide" />
-      <div className="absolute -left-[20%] -bottom-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[100px] animate-floatSoft" />
+    <section id="contact" className="relative overflow-hidden bg-ink text-white py-16 md:py-24 border-t border-white/5 line-figures-dark">
+      <div className="absolute -right-[20%] -top-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-blue-500/5 blur-[100px]" />
+      <div className="absolute -left-[20%] -bottom-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[100px]" />
       
       <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:px-10 items-center">
         <Reveal>
@@ -667,18 +690,18 @@ function ContactSection() {
               Whether you need a complete digital ecosystem or a single domain solution,
               Voltale has the expertise to deliver. Reach out and tell us about your vision.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-6 text-xs">
+            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-xs">
               <a
                 href="mailto:info@voltale.com"
-                className="group text-[10px] font-bold uppercase tracking-[0.3em] text-white transition-all hover:tracking-[0.4em]"
+                className="group text-[10px] font-bold uppercase tracking-[0.3em] text-white transition-all hover:tracking-[0.4em] self-start"
               >
                 info@voltale.com
                 <span className="block h-px w-0 bg-white/30 transition-all group-hover:w-full" />
               </a>
-              <span className="text-white/20">|</span>
-              <span className="text-white/60 font-medium">+250796885690</span>
-              <span className="text-white/20">|</span>
-              <span className="text-white/60 font-medium">Kigali, Rwanda</span>
+              <div className="hidden sm:block text-white/20">|</div>
+              <span className="text-white/60 font-medium tracking-wider">+250796885690</span>
+              <div className="hidden sm:block text-white/20">|</div>
+              <span className="text-white/60 font-medium tracking-wider">Kigali, Rwanda</span>
             </div>
           </div>
         </Reveal>

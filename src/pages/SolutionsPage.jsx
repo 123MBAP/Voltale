@@ -24,7 +24,7 @@ function SolutionModal({ solution, onClose }) {
           &times;
         </button>
 
-        <div className="p-8 sm:p-12">
+        <div className="p-6 sm:p-12">
           <div className="flex items-start gap-4 border-b border-[#2B2B2B]/10 pb-6">
             <span className="font-display text-5xl leading-none tracking-[-0.06em] text-graphite/15 sm:text-7xl">
               {solution.index}
@@ -272,14 +272,14 @@ export default function SolutionsPage() {
                         </div>
                         <div className="flex flex-1 flex-col items-start gap-3 p-6 sm:p-8">
                           {solution.previewUrl ? (
-                            <div className="w-full overflow-hidden" style={{ height: '480px' }}>
+                            <div className="w-full overflow-hidden h-[320px] sm:h-[480px]">
                               <iframe
                                 src={solution.previewUrl}
-                                className="h-[600px] w-full"
+                                className="h-[420px] sm:h-[600px] w-full pointer-events-none lg:pointer-events-auto"
                                 title={solution.title}
                                 loading="lazy"
                                 sandbox="allow-scripts allow-same-origin allow-forms"
-                                style={{ marginTop: '-60px' }}
+                                style={{ marginTop: '-40px' }}
                               />
                             </div>
                           ) : (

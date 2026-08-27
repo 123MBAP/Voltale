@@ -24,9 +24,9 @@ function ServiceModal({ service, onClose }) {
           &times;
         </button>
 
-        <div className="grid gap-0 sm:grid-cols-3">
+        <div className="grid grid-cols-3 gap-1 p-2 sm:p-0 sm:gap-0">
           {service.images.map((img, idx) => (
-            <div key={img} className="h-48 overflow-hidden border-b border-r border-[#2B2B2B]/10 sm:h-64">
+            <div key={img} className="aspect-video sm:h-64 overflow-hidden border border-[#2B2B2B]/10 sm:border-0 sm:border-b sm:border-r rounded sm:rounded-none">
               <img
                 src={`/images/${img}`}
                 alt={`${service.title} ${idx + 1}`}
@@ -36,7 +36,7 @@ function ServiceModal({ service, onClose }) {
           ))}
         </div>
 
-        <div className="p-8 sm:p-12">
+        <div className="p-6 sm:p-12">
           <div className="flex items-start gap-4 border-b border-[#2B2B2B]/10 pb-6">
             <span className="font-display text-5xl leading-none tracking-[-0.06em] text-graphite/15 sm:text-7xl">
               {service.index}
@@ -147,7 +147,7 @@ export default function ServicesPage() {
                         {service.images.map((img, idx) => (
                         <div
                           key={img}
-                          className={`overflow-hidden border border-[#2B2B2B]/12 ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
+                          className={`overflow-hidden border border-[#2B2B2B]/12 aspect-square ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
                         >
                           <img
                             src={`/images/${img}`}

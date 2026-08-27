@@ -8,7 +8,6 @@ const navItems = [
   { label: 'About', href: '/#about' },
   { label: 'Solutions', href: '/solutions', internal: true },
   { label: 'Services', href: '/services', internal: true },
-  { label: 'Approach', href: '/#approach' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -34,79 +33,91 @@ export default function FloatingNav() {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full border-b border-ink/5 bg-white/85 px-5 py-4 shadow-[0_4px_24px_rgba(17,17,17,0.02)] backdrop-blur-md transition-all duration-300 sm:px-8 lg:px-10">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
-        <Reveal>
-          <Link
-            to="/"
-            className="group pointer-events-auto inline-flex items-center gap-3 transition-opacity duration-500 hover:opacity-80"
-          >
-            <img src={logo} alt="Voltale" className="h-6 w-auto sm:h-7" />
-            <span className="hidden text-[9px] tracking-[0.42em] text-graphite/60 transition-transform duration-500 group-hover:translate-x-1 sm:block font-medium">
-              innovation driven
-            </span>
-          </Link>
-        </Reveal>
-
-        <div className="flex items-center gap-4">
-          <Reveal delay={120}>
-            <nav aria-label="Primary" className="pointer-events-auto hidden sm:block">
-              <ul className="flex items-center gap-5 text-[9px] font-semibold uppercase tracking-[0.3em] text-ink/65 sm:gap-7">
-                {navItems.map((item) => (
-                  <li key={item.label}>
-                    {item.internal ? (
-                      <Link
-                        to={item.href}
-                        className="transition-all duration-500 hover:text-ink hover:tracking-[0.36em]"
-                      >
-                        {item.label}
-                      </Link>
-                    ) : (
-                      <a
-                        href={item.href}
-                        className="transition-all duration-500 hover:text-ink hover:tracking-[0.36em]"
-                      >
-                        {item.label}
-                      </a>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
+    <>
+      <header className={`fixed left-0 top-0 z-50 w-full border-b transition-all duration-300 px-5 py-4 sm:px-8 lg:px-10 ${
+        menuOpen 
+          ? 'bg-mist border-transparent' 
+          : 'bg-white/85 border-ink/5 shadow-[0_4px_24px_rgba(17,17,17,0.02)] backdrop-blur-md'
+      }`}>
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
+          <Reveal>
+            <Link
+              to="/"
+              className="group pointer-events-auto inline-flex items-center gap-3 transition-opacity duration-500 hover:opacity-80"
+            >
+              <img src={logo} alt="Voltale" className="h-6 w-auto sm:h-7" />
+              <span className="hidden text-[9px] tracking-[0.42em] text-graphite/60 transition-transform duration-500 group-hover:translate-x-1 sm:block font-medium">
+                innovation driven
+              </span>
+            </Link>
           </Reveal>
 
-          <button
-            type="button"
-            className="pointer-events-auto relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-[5px] sm:hidden"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          >
-            <span
-              className={`block h-px w-5 bg-ink transition-all duration-300 ${
-                menuOpen ? 'translate-y-[6px] rotate-45' : ''
-              }`}
-            />
-            <span
-              className={`block h-px w-5 bg-ink transition-all duration-300 ${
-                menuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block h-px w-5 bg-ink transition-all duration-300 ${
-                menuOpen ? '-translate-y-[6px] -rotate-45' : ''
-              }`}
-            />
-          </button>
+          <div className="flex items-center gap-4">
+            <Reveal delay={120}>
+              <nav aria-label="Primary" className="pointer-events-auto hidden sm:block">
+                <ul className="flex items-center gap-5 text-[9px] font-semibold uppercase tracking-[0.3em] text-ink/65 sm:gap-7">
+                  {navItems.map((item) => (
+                    <li key={item.label}>
+                      {item.internal ? (
+                        <Link
+                          to={item.href}
+                          className="transition-all duration-500 hover:text-ink hover:tracking-[0.36em]"
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className="transition-all duration-500 hover:text-ink hover:tracking-[0.36em]"
+                        >
+                          {item.label}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </Reveal>
+
+            <button
+              type="button"
+              className="pointer-events-auto relative z-50 flex h-8 w-8 flex-col items-center justify-center gap-[5px] sm:hidden"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <span
+                className={`block h-px w-5 bg-ink transition-all duration-300 ${
+                  menuOpen ? 'translate-y-[6px] rotate-45' : ''
+                }`}
+              />
+              <span
+                className={`block h-px w-5 bg-ink transition-all duration-300 ${
+                  menuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span
+                className={`block h-px w-5 bg-ink transition-all duration-300 ${
+                  menuOpen ? '-translate-y-[6px] -rotate-45' : ''
+                }`}
+              />
+            </button>
+          </div>
         </div>
-      </div>
+
+        {/* Centered VOLTALE text on mobile viewports */}
+        <span className="sm:hidden font-display text-sm font-extrabold uppercase tracking-[0.25em] text-ink absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none">
+          VOLTALE
+        </span>
+      </header>
 
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-mist transition-all duration-500 ${
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-between overflow-y-auto bg-mist px-6 py-20 transition-all duration-500 ${
           menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         } sm:hidden`}
       >
-        <nav aria-label="Mobile navigation">
-          <ul className="flex flex-col items-center gap-10">
+        <div className="h-4 shrink-0" />
+        <nav aria-label="Mobile navigation" className="my-auto">
+          <ul className="flex flex-col items-center gap-8 my-8">
             {navItems.map((item, i) => (
               <li
                 key={item.label}
@@ -139,10 +150,10 @@ export default function FloatingNav() {
           </ul>
         </nav>
 
-        <div className="absolute bottom-12 text-[10px] uppercase tracking-[0.42em] text-graphite/40">
+        <div className="text-[10px] uppercase tracking-[0.42em] text-graphite/40 mt-8 shrink-0">
           innovation driven
         </div>
       </div>
-    </header>
+    </>
   );
 }
