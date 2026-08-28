@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { solutions } from '../data/solutions';
-import FloatingNav from '../components/FloatingNav';
 import Reveal from '../components/Reveal';
 
 function SolutionModal({ solution, onClose }) {
@@ -176,12 +175,11 @@ export default function SolutionsPage() {
   const [activeSolution, setActiveSolution] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#F8F8F6] text-[#111111]">
-      <FloatingNav />
+    <div className="min-h-screen bg-[#F8F8F6] text-[#111111] pt-20">
 
       <SolutionModal solution={activeSolution} onClose={() => setActiveSolution(null)} />
 
-      <section className="relative overflow-hidden pt-36 pb-20 sm:pt-40 sm:pb-28">
+      <section className="relative overflow-hidden pt-10 pb-0 sm:pt-16 sm:pb-16">
         <div className="absolute inset-0 -z-10 bg-[#F8F8F6]" />
     <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
           <Reveal>
@@ -190,7 +188,7 @@ export default function SolutionsPage() {
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.92] tracking-[-0.05em] text-ink">
+            <h1 className="mt-4 max-w-3xl font-display text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-[-0.03em] text-ink">
               Digital platforms built for real-world impact.
             </h1>
           </Reveal>

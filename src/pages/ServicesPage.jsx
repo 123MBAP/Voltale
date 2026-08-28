@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { services } from '../data/services';
-import FloatingNav from '../components/FloatingNav';
 import Reveal from '../components/Reveal';
+import logo from '../assets/images/logo_black.png';
 
 function ServiceModal({ service, onClose }) {
   if (!service) return null;
@@ -26,9 +26,9 @@ function ServiceModal({ service, onClose }) {
 
         <div className="grid grid-cols-3 gap-1 p-2 sm:p-0 sm:gap-0">
           {service.images.map((img, idx) => (
-            <div key={img} className="aspect-video sm:h-64 overflow-hidden border border-[#2B2B2B]/10 sm:border-0 sm:border-b sm:border-r rounded sm:rounded-none">
+            <div key={idx} className="aspect-video sm:h-64 overflow-hidden border border-[#2B2B2B]/10 sm:border-0 sm:border-b sm:border-r rounded sm:rounded-none">
               <img
-                src={`/images/${img}`}
+                src={img}
                 alt={`${service.title} ${idx + 1}`}
                 className="h-full w-full object-cover"
               />
@@ -75,12 +75,11 @@ export default function ServicesPage() {
   const [activeService, setActiveService] = useState(null);
 
   return (
-    <div className="min-h-screen bg-[#F8F8F6] text-[#111111]">
-      <FloatingNav />
+    <div className="min-h-screen bg-[#F8F8F6] text-[#111111] pt-20">
 
       <ServiceModal service={activeService} onClose={() => setActiveService(null)} />
 
-      <section className="relative overflow-hidden pt-36 pb-20 sm:pt-40 sm:pb-28">
+      <section className="relative overflow-hidden pt-10 pb-12 sm:pt-16 sm:pb-16">
         <div className="absolute inset-0 -z-10 bg-[#F8F8F6]" />
     <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
           <Reveal>
@@ -89,7 +88,7 @@ export default function ServicesPage() {
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.92] tracking-[-0.05em] text-ink">
+            <h1 className="mt-4 max-w-3xl font-display text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-[-0.03em] text-ink">
               Comprehensive technology services across seven domains.
             </h1>
           </Reveal>
@@ -102,7 +101,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-t border-[#2B2B2B]/10 py-20 sm:py-28">
+      <section className="border-t border-[#2B2B2B]/10 pt-8 sm:pt-12">
         <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
           <div className="space-y-20">
             {services.map((service, i) => (
@@ -146,11 +145,11 @@ export default function ServicesPage() {
                       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                         {service.images.map((img, idx) => (
                         <div
-                          key={img}
+                          key={idx}
                           className={`overflow-hidden border border-[#2B2B2B]/12 aspect-square ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
                         >
                           <img
-                            src={`/images/${img}`}
+                            src={img}
                             alt={`${service.title} ${idx + 1}`}
                             className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                           />
@@ -199,7 +198,7 @@ export default function ServicesPage() {
       <footer className="border-t border-[#2B2B2B]/10 bg-[#F8F8F6] py-8">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-5 text-[10px] uppercase tracking-[0.42em] text-graphite/50 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
           <div className="flex items-center gap-3">
-            <img src="/images/logo_black.png" alt="Voltale" className="h-6 w-auto" />
+            <img src={logo} alt="Voltale" className="h-6 w-auto" />
             <span>innovation driven</span>
           </div>
           <div className="flex items-center gap-6">

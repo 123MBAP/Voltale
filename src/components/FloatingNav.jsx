@@ -5,10 +5,10 @@ import logo from '../assets/images/logo_black.png';
 
 const navItems = [
   { label: 'Home', href: '/', internal: true },
-  { label: 'About', href: '/#about' },
+  { label: 'About', href: '/about', internal: true },
   { label: 'Solutions', href: '/solutions', internal: true },
   { label: 'Services', href: '/services', internal: true },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact', internal: true },
 ];
 
 export default function FloatingNav() {
@@ -43,12 +43,17 @@ export default function FloatingNav() {
           <Reveal>
             <Link
               to="/"
-              className="group pointer-events-auto inline-flex items-center gap-3 transition-opacity duration-500 hover:opacity-80"
+              className="group pointer-events-auto flex items-center gap-2.5 transition-opacity duration-500 hover:opacity-80"
             >
               <img src={logo} alt="Voltale" className="h-6 w-auto sm:h-7" />
-              <span className="hidden text-[9px] tracking-[0.42em] text-graphite/60 transition-transform duration-500 group-hover:translate-x-1 sm:block font-medium">
-                innovation driven
-              </span>
+              <div className="flex flex-col items-start justify-center leading-none">
+                <span className="font-display text-[13px] font-bold uppercase tracking-[0.15em] text-ink sm:text-[15px]">
+                  Voltale
+                </span>
+                <span className="text-[7.5px] tracking-[0.25em] uppercase text-graphite/55 font-bold mt-1">
+                  innovation driven
+                </span>
+              </div>
             </Link>
           </Reveal>
 
