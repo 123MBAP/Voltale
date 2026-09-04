@@ -296,7 +296,7 @@ function DomainMatrix() {
     }
   ];
 
-  const current = domainList[activeDomain];
+  const current = domainList[activeDomain >= 0 ? activeDomain : 0] || domainList[0];
 
   return (
     <section className="bg-[#F8F8F6] text-ink py-16 md:py-20 border-t border-[#2B2B2B]/10">
@@ -330,7 +330,7 @@ function DomainMatrix() {
               return (
                 <div key={domain.id} className="flex flex-col">
                   <button
-                    onClick={() => setActiveDomain(activeDomain === index ? -1 : index)}
+                    onClick={() => setActiveDomain(index)}
                     className={`group flex items-center justify-between p-4 rounded-none text-left transition-all duration-300 ${
                       isActive
                         ? 'bg-white shadow-sm lg:translate-x-1.5'
@@ -412,7 +412,7 @@ function DomainMatrix() {
             <div className="hidden lg:flex bg-white p-6 sm:p-8 rounded-none shadow-sm flex-col justify-between overflow-hidden sticky top-24">
               <div>
                 <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-3">
-                  Domain 0{activeDomain + 1} of 0{domainList.length} — {current.badge}
+                  Domain 0{(activeDomain >= 0 ? activeDomain : 0) + 1} of 0{domainList.length} — {current.badge}
                 </p>
 
                 {/* Image */}
@@ -490,7 +490,8 @@ function ContactSection() {
           email: formData.email,
           message: formData.message,
           _subject: `New message from ${formData.name} (Voltale Website)`,
-          _template: "table"
+          _template: "table",
+          _captcha: "false"
         })
       });
 

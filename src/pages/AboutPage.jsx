@@ -61,18 +61,18 @@ const values = [
 // AboutSection Component
 function AboutSection() {
   return (
-    <section id="about" className="bg-white text-ink pt-10 pb-24 md:pt-16 md:pb-32 line-figures-light">
+    <section id="about" className="bg-white text-ink pt-8 pb-10 md:pt-12 md:pb-14 line-figures-light">
       <div className="mx-auto grid w-full max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
         
         {/* Left Column: Heading, Description & Image */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col h-full justify-between gap-8">
           <SectionHeading
             label="About Voltale"
             title="A technology partner that spans the full spectrum of digital innovation."
             description="From connected devices to enterprise software, from AI-driven insights to digital presence — Voltale delivers integrated solutions across five strategic domains. We combine deep technical expertise with a practical understanding of business operations."
           />
           
-          <div className="relative h-48 overflow-hidden border border-[#2B2B2B]/10 sm:h-60 rounded-none shadow-sm group bg-white flex items-center justify-center p-3">
+          <div className="relative flex-1 min-h-[260px] sm:min-h-[300px] overflow-hidden border border-[#2B2B2B]/10 rounded-none shadow-sm group bg-white flex items-center justify-center p-4">
             <img
               src={about1Img}
               alt="Voltale Engineering and Innovation"
@@ -88,10 +88,10 @@ function AboutSection() {
               Our story
             </p>
             <p className="text-sm leading-7 text-graphite/75">
-              Voltale was founded by <span className="font-semibold text-ink">Patrick MBABAZI</span> and <span className="font-semibold text-ink">Fred TUYISHIME</span> with the primary vision of establishing a leading technology firm that empowers the story of tomorrow through innovation. The co-founders recognized a significant fragmentation in the technology landscape where hardware systems and enterprise software were treated as isolated silos. Patrick, a mechatronician holding a Bachelor’s degree in Mechatronics Technology, brought deep expertise in automation, physical computing, and smart sensors. Fred, possessing a B.Tech in IT, contributed extensive experience in robust database design, cloud infrastructure, and network architecture. By uniting these disciplines, they established Voltale's signature cross-domain approach.
+              Voltale was founded by <span className="font-semibold text-ink">Patrick MBABAZI</span> and <span className="font-semibold text-ink">Fred TUYISHIME</span> to bridge the gap between physical hardware and enterprise software. Patrick brings deep expertise in mechatronics, automation, and smart sensing, while Fred provides extensive experience in IT infrastructure, database systems, and cloud architecture. Uniting these disciplines created Voltale's signature cross-domain engineering approach.
             </p>
             <p className="mt-4 text-sm leading-7 text-graphite/75">
-              Their early collaborations centered on building integrated platforms that bridged physical devices with secure, scalable cloud applications. This synergy proved vital in designing and launching major products like Haficonnect and E-Nyandiko, demonstrating that complex operations could be streamlined through unified engineering. Under their leadership, Voltale has expanded its capabilities across five strategic domains, deploying custom agritech monitors in agriculture, secure database integrations in healthcare, automation workflows in business, and launching specialized technical training and internships to build the next generation of IT talent.
+              Their early work focused on connecting physical devices with secure, scalable cloud platforms and robust digital architectures. Today, Voltale delivers impactful innovations across five strategic domains—from agritech monitoring and healthcare systems to business automation and technical talent development.
             </p>
             <p className="mt-4 text-sm leading-7 text-graphite/75">
               At the heart of Voltale’s success is a shared corporate belief that <span className="font-semibold text-ink">every achievement is not the destiny, but rather the foundation for the new instead</span>. For Patrick and Fred, this means that a successful deployment is never the end of the road, but a stepping stone to iterate further. This philosophy keeps the company agile, pushing them to continuously refine their platforms and ensuring that Voltale remains at the forefront of digital transformation and physical-digital integration.
@@ -174,7 +174,7 @@ function ApproachSection() {
   const currentStep = deliverySteps[activeStep];
 
   return (
-    <section id="approach" className="bg-[#F8F8F6] text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
+    <section id="approach" className="bg-[#F8F8F6] text-ink pt-8 pb-12 sm:pt-10 sm:pb-16 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           

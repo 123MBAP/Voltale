@@ -6,8 +6,8 @@ import logo from '../assets/images/logo_black.png';
 
 const navItems = [
   { label: 'Home', href: '/', internal: true },
-  { label: 'About', href: '/about', internal: true },
   { label: 'Services', href: '/services', internal: true },
+  { label: 'About', href: '/about', internal: true },
   { label: 'Contact', href: '/contact', internal: true },
 ];  
 

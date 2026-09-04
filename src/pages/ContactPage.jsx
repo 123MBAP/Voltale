@@ -65,7 +65,8 @@ export default function ContactPage() {
           domain: formData.domain,
           message: formData.message,
           _subject: `New inquiry from ${formData.name} [${formData.domain}]`,
-          _template: "table"
+          _template: "table",
+          _captcha: "false"
         })
       });
 
