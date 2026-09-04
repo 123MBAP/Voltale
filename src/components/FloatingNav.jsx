@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Reveal from './Reveal';
+import SocialLinks from './SocialLinks';
 import logo from '../assets/images/logo_black.png';
 
 const navItems = [
   { label: 'Home', href: '/', internal: true },
   { label: 'About', href: '/about', internal: true },
-  { label: 'Solutions', href: '/solutions', internal: true },
   { label: 'Services', href: '/services', internal: true },
   { label: 'Contact', href: '/contact', internal: true },
-];
+];  
 
 export default function FloatingNav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -108,11 +108,6 @@ export default function FloatingNav() {
             </button>
           </div>
         </div>
-
-        {/* Centered VOLTALE text on mobile viewports */}
-        <span className="sm:hidden font-display text-sm font-extrabold uppercase tracking-[0.25em] text-ink absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 pointer-events-none">
-          VOLTALE
-        </span>
       </header>
 
       <div
@@ -155,8 +150,11 @@ export default function FloatingNav() {
           </ul>
         </nav>
 
-        <div className="text-[10px] uppercase tracking-[0.42em] text-graphite/40 mt-8 shrink-0">
-          innovation driven
+        <div className="flex flex-col items-center gap-4 mt-8 shrink-0">
+          <SocialLinks itemClassName="text-ink/60 hover:text-ink hover:bg-black/5" />
+          <div className="text-[10px] uppercase tracking-[0.42em] text-graphite/40">
+            innovation driven
+          </div>
         </div>
       </div>
     </>

@@ -1,606 +1,473 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
-import SectionHeading from '../components/SectionHeading';
-import { services } from '../data/services';
-import { solutions } from '../data/solutions';
-import logo from '../assets/images/logo_black.png';
-import hafiServicesImg from '../assets/images/hafi_services.png';
-import hafiMarketImg from '../assets/images/hafi_market.png';
-import hafiRealEstateImg from '../assets/images/hafi_real_estate.png';
+import Footer from '../components/Footer';
+import SocialLinks from '../components/SocialLinks';
+import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
 
-// Enhanced data with icons
-const industries = [
-  {
-    name: 'Agriculture',
-    description: 'Digitalizing agriculture through innovative agritech solutions. We build smart monitoring systems, sensor networks, and data platforms to modernize farming operations.'
-  },
-  {
-    name: 'Healthcare',
-    description: 'Transforming health delivery with secure, compliant software. We design secure patient databases, clinical management tools, and modern healthtech platforms.'
-  },
-  {
-    name: 'Business',
-    description: 'Accelerating digital presence and operational scale. We deliver custom software, cloud automation systems, and targeted data-driven digital marketing.'
-  },
-  {
-    name: 'Education',
-    description: 'Empowering future tech talent through hands-on internships. We embed students directly in real software, IoT, and infrastructure projects across our domains.'
-  }
-];
+// Asset Imports
+import iot1Img from '../assets/images/iot1.png';
+import iot2Img from '../assets/images/iot2.png';
+import iot3Img from '../assets/images/iot3.png';
+import software1Img from '../assets/images/software1.png';
+import software2Img from '../assets/images/software2.png';
+import ai1Img from '../assets/images/ai1.png';
+import ai2Img from '../assets/images/ai2.png';
+import it1Img from '../assets/images/it1.png';
+import it2Img from '../assets/images/it2.png';
+import business1Img from '../assets/images/business1.png';
 
-const testimonials = [
-  {
-    quote: "Voltale's integrated approach helped us modernize our entire infrastructure — from IoT sensors to AI analytics. They're not just a vendor; they're a true partner.",
-
-  },
-  {
-    quote: "They don't just build software; they understand our business and deliver real impact. Their cross-domain expertise is unmatched.",
-   
-  },
-  {
-    quote: "The precision and innovation Voltale brings to every project is remarkable. They've transformed how we think about technology.",
-  }
-];
-
-const values = [
-  {
-    index: '01',
-    title: 'Precision engineering',
-    text: 'Every system we build is architected for reliability, performance, and maintainability. We measure twice and cut once.',
-  },
-  {
-    index: '02',
-    title: 'Innovation-first mindset',
-    text: 'Technology evolves fast. We stay ahead so our clients don\'t have to chase — they lead.'
-  },
-  {
-    index: '03',
-    title: 'Partnership over vendor',
-    text: 'We embed ourselves in our clients\' context. A true technology partner understands the business before proposing the solution.',
-  }
-];
-
-// Enhanced Hero Section
+// 1. Hero Section
 function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-ink text-mist pt-32 pb-16 sm:pt-40 sm:pb-24">
-      {/* Decorative Glowing Ambience Blobs */}
-      <div className="absolute left-[10%] top-[20%] -z-10 h-72 w-72 rounded-full bg-taupe/10 blur-[100px]" />
-      <div className="absolute right-[10%] bottom-[10%] -z-10 h-96 w-96 rounded-full bg-stone/15 blur-[120px]" />
+    <section id="top" className="relative overflow-hidden bg-ink text-mist pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 min-h-[85vh] flex items-center">
+      <AnimatedHeroBackground />
 
-      <div className="relative z-10 mx-auto grid min-h-[80vh] w-full max-w-7xl gap-12 px-5 pb-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-10 lg:pb-16 items-center">
-        <div className="flex flex-col justify-between gap-12 text-center lg:text-left">
-          <div className="max-w-2xl mx-auto lg:mx-0">
-            <Reveal delay={60}>
-              <div className="flex items-center justify-center lg:justify-start gap-4">
-                <span className="h-px w-4 bg-white/20 sm:w-8" />
-                <p className="text-[10px] uppercase tracking-[0.46em] text-white/50 font-medium text-center lg:text-left">
-                  Powering the stories of tomorrow through innovation
-                </p>
-                <span className="h-px w-4 bg-white/20 sm:w-8 lg:hidden" />
-              </div>
-            </Reveal>
-
-            <Reveal delay={140}>
-              <h1 className="mt-8 max-w-[12ch] font-display text-[clamp(2.75rem,10vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.07em] text-white text-center lg:text-left mx-auto lg:mx-0">
-                Voltale
-              </h1>
-            </Reveal>
-
-            <Reveal delay={220}>
-              <p className="mt-6 max-w-lg text-sm leading-8 text-white/70 sm:text-base text-center lg:text-left mx-auto lg:mx-0">
-                We help businesses transform through software development, IoT solutions, 
-                digital transformation, AI, and IT infrastructure. From connected devices 
-                to enterprise software, Voltale delivers integrated solutions across seven 
-                strategic domains.
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10 text-left">
+        <div className="flex flex-col items-start justify-start max-w-3xl">
+          <Reveal delay={60}>
+            <div className="inline-flex items-center gap-3 px-3.5 py-1.5">
+              <p className="text-[9px] uppercase tracking-[0.35em] text-white/90 font-mono font-semibold">
+                Cross-Domain Engineering • Kigali, Rwanda
               </p>
-            </Reveal>
+            </div>
+          </Reveal>
 
-            {/* Mobile-only 2-column images row */}
-            <Reveal delay={260}>
-              <div className="mt-8 grid grid-cols-2 gap-4 lg:hidden max-w-lg mx-auto">
-                <div className="overflow-hidden border border-white/10 rounded aspect-[4/3] relative group">
-                  <img 
-                    src="/images/hero-tech.png" 
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
-                    alt="Innovative technology chip visualization representing Voltale core domains"
-                  />
-                  <div className="absolute inset-0 bg-ink/35 mix-blend-multiply" />
-                </div>
-                <div className="overflow-hidden border border-white/10 rounded aspect-[4/3] relative group">
-                  <img 
-                    src="/images/services-data.jpg" 
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
-                    alt="Data analytics and processing visual representation"
-                  />
-                  <div className="absolute inset-0 bg-ink/35 mix-blend-multiply" />
-                </div>
-              </div>
-            </Reveal>
+          <Reveal delay={140}>
+            <h1 className="mt-5 sm:mt-6 font-display text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.07em] text-white text-left">
+              Voltale
+            </h1>
+            <p className="mt-2.5 font-display text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.03em] text-white/90">
+              Where Physical Computing Meets Scalable Cloud Intelligence.
+            </p>
+          </Reveal>
 
-            <Reveal delay={300}>
-              <div className="mt-10 flex flex-wrap justify-center lg:justify-start gap-4">
-                <Link
-                  to="/contact"
-                  className="group relative overflow-hidden bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] text-[#111111] transition-all hover:bg-white/90 hover:shadow-lg"
-                >
-                  <span className="relative z-10">Get Started</span>
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-                </Link>
-                <Link
-                  to="/services"
-                  className="border border-white/20 px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] text-white transition-all hover:border-white/40 hover:bg-white/5 hover:shadow-lg"
-                >
-                  Explore Solutions
-                </Link>
-              </div>
-            </Reveal>
-          </div>
+          <Reveal delay={220}>
+            <p className="mt-4 max-w-2xl text-xs sm:text-sm md:text-base leading-relaxed text-white/75 font-normal text-left">
+              We engineer integrated technological ecosystems. Uniting custom IoT hardware, 
+              mechatronics, enterprise cloud software, and applied AI, we build resilient, future-proof platforms for industry leaders.
+            </p>
+          </Reveal>
+
+          <Reveal delay={300}>
+            <div className="mt-7 flex flex-wrap justify-start gap-3 sm:gap-4">
+              <a
+                href="#contact"
+                className="group relative overflow-hidden bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-[#111111] transition-all hover:bg-white/90 hover:shadow-2xl hover:scale-[1.02] active:scale-95 rounded-none shadow-md"
+              >
+                <span className="relative z-10">Start Project Discovery</span>
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+              </a>
+              <Link
+                to="/solutions"
+                className="border border-white/20 bg-white/[0.04] backdrop-blur-sm px-7 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all hover:border-white/50 hover:bg-white/10 hover:scale-[1.02] active:scale-95 rounded-none"
+              >
+                Explore Solutions
+              </Link>
+            </div>
+          </Reveal>
 
           <Reveal delay={360}>
-            <div className="flex flex-wrap justify-center lg:justify-start items-center lg:items-end gap-8 border-t border-white/10 pt-6 text-[9px] uppercase tracking-[0.42em] text-white/40 sm:gap-12">
-              <div className="flex flex-col gap-1.5 items-center lg:items-start text-center lg:text-left">
-                <span className="text-white/40">Location</span>
-                <span className="text-xs font-semibold tracking-[0.15em] text-white">Kigali, Rwanda</span>
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-white/10 pt-6 w-full">
+              <div className="flex flex-col gap-1 items-start">
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Domains</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">7 Strategic</span>
               </div>
-              <div className="flex flex-col gap-1.5 items-center lg:items-start text-center lg:text-left">
-                <span className="text-white/40">Focus</span>
-                <span className="text-xs font-semibold tracking-[0.15em] text-white">Technology / Strategy</span>
+              <div className="flex flex-col gap-1 items-start">
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Discipline</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">100% Unified</span>
               </div>
-              <div className="flex flex-col gap-1.5 items-center lg:items-start text-center lg:text-left">
-                <span className="text-white/40">Signal</span>
-                <span className="text-xs font-semibold tracking-[0.15em] text-white">Precise, innovative, enduring</span>
+              <div className="flex flex-col gap-1 items-start">
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Engineering Hub</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">Kigali, RW</span>
+              </div>
+              <div className="flex flex-col gap-1 items-start">
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Execution</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">Precise & Enduring</span>
               </div>
             </div>
           </Reveal>
         </div>
       </div>
-
-      {/* Right Inclined Images Section */}
-      <div 
-        className="absolute top-0 right-0 h-full w-[46%] hidden lg:flex flex-col overflow-hidden z-0"
-        style={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)' }}
-      >
-        <div className="h-1/2 w-full overflow-hidden border-b border-white/10 relative group">
-          <img 
-            src="/images/hero-tech.png" 
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
-            alt="Innovative technology chip visualization representing Voltale core domains"
-          />
-          <div className="absolute inset-0 bg-ink/35 mix-blend-multiply" />
-        </div>
-        <div className="h-1/2 w-full overflow-hidden relative group">
-          <img 
-            src="/images/services-data.jpg" 
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" 
-            alt="Data analytics and processing visual representation"
-          />
-          <div className="absolute inset-0 bg-ink/35 mix-blend-multiply" />
-        </div>
-      </div>
     </section>
   );
 }
 
-// Enhanced About Section
-function AboutSection() {
+// 2. Asymmetrical Bento Paradigm Section (Unpredictable, Rich Card Design)
+function ParadigmSection() {
   return (
-    <section id="about" className="bg-white text-ink py-10 md:py-14 line-figures-light">
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-        
-        {/* Left Column: Heading, Description & Image */}
-        <div className="flex flex-col gap-8">
-          <SectionHeading
-            label="About Voltale"
-            title="A technology partner that spans the full spectrum of digital innovation."
-            description="From connected devices to enterprise software, from AI-driven insights to digital presence — Voltale delivers integrated solutions across seven strategic domains. We combine deep technical expertise with a practical understanding of business operations."
-          />
-          
-          <div className="relative h-48 overflow-hidden border border-[#2B2B2B]/10 sm:h-60 rounded-lg shadow-sm group">
-            <img
-              src="/images/about-circuit.jpg"
-              alt="Computer circuit board technology"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-          </div>
-        </div>
-
-        {/* Right Column: Our Story */}
-        <div className="flex flex-col gap-8 lg:pt-6">
-          <div className="border-t border-[#2B2B2B]/10 pt-8 lg:border-t-0 lg:pt-0">
-            <p className="text-[10px] uppercase tracking-[0.42em] text-graphite/45 font-semibold mb-4">
-              Our story
-            </p>
-            <p className="text-sm leading-7 text-graphite/75">
-              Voltale was founded by <span className="font-semibold text-ink">Patrick MBABAZI</span> and <span className="font-semibold text-ink">Fred TUYISHIME</span> with the primary vision of establishing a leading technology firm that empowers the story of tomorrow through innovation. The co-founders recognized a significant fragmentation in the technology landscape where hardware systems and enterprise software were treated as isolated silos. Patrick, a mechatronician holding a Bachelor’s degree in Mechatronics Technology, brought deep expertise in automation, physical computing, and smart sensors. Fred, possessing a B.Tech in IT, contributed extensive experience in robust database design, cloud infrastructure, and network architecture. By uniting these disciplines, they established Voltale's signature cross-domain approach.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-graphite/75">
-              Their early collaborations centered on building integrated platforms that bridged physical devices with secure, scalable cloud applications. This synergy proved vital in designing and launching major products like Haficonnect and E-Nyandiko, demonstrating that complex operations could be streamlined through unified engineering. Under their leadership, Voltale has expanded its capabilities across seven strategic domains, deploying custom agritech monitors in agriculture, secure database integrations in healthcare, automation workflows in business, and launching specialized technical training and internships to build the next generation of IT talent.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-graphite/75">
-              At the heart of Voltale’s success is a shared corporate belief that <span className="font-semibold text-ink">every achievement is not the destiny, but rather the foundation for the new instead</span>. For Patrick and Fred, this means that a successful deployment is never the end of the road, but a stepping stone to iterate further. This philosophy keeps the company agile, pushing them to continuously refine their platforms and ensuring that Voltale remains at the forefront of digital transformation and physical-digital integration.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  );
-}
-
-// Enhanced Solutions Section
-function SolutionsSection() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [hafiSubTab, setHafiSubTab] = useState(0);
-
-  const activeSolution = solutions[activeTab];
-
-  const hafiImages = [
-    { label: 'Services Hub', img: hafiServicesImg, desc: 'Nearby provider discovery' },
-    { label: 'Marketplace', img: hafiMarketImg, desc: 'Product uploads & trade' },
-    { label: 'Real Estate', img: hafiRealEstateImg, desc: 'Property listings & brokers' },
-  ];
-
-  return (
-    <section id="solutions" className="border-t border-[#2B2B2B]/10 bg-[#F8F8F6] py-10 md:py-14">
+    <section className="bg-white text-ink py-16 md:py-20 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-8">
-          <div>
-            <div className="flex items-left gap-3">
-              <span className="h-px w-6 bg-graphite/30" />
-              <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-semibold">Featured products</p>
-            </div>
-            <h2 className="font-display text-4xl tracking-[-0.04em] text-ink mt-2 sm:text-5xl">
-              Solutions we've built
-            </h2>
-          </div>
-          <div className="flex border border-ink/10 p-1 bg-white rounded-0 self-start shadow-sm">
-            {solutions.map((sol, idx) => (
-              <button
-                key={sol.title}
-                onClick={() => setActiveTab(idx)}
-                className={`px-5 py-2 text-[10px] uppercase tracking-[0.2em] rounded-0 transition-all duration-300 ${
-                  activeTab === idx 
-                    ? 'bg-ink text-white font-bold shadow-sm' 
-                    : 'text-graphite/55 hover:text-ink hover:bg-ink/5'
-                }`}
-              >
-                {sol.title.split('.')[0]}
-              </button>
-            ))}
-          </div>
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-10">
+          <p className="text-xs uppercase tracking-[0.3em] text-graphite/50 font-semibold font-mono mb-2">
+            The Voltale Advantage
+          </p>
+          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-ink">
+            Bridging hardware sensors and cloud systems through unified engineering.
+          </h2>
+          <p className="mt-3 text-sm sm:text-base leading-7 text-graphite/75">
+            Traditional agencies separate hardware physics from software development. Voltale converges embedded sensors, 
+            microcontroller telemetry, distributed cloud microservices, and applied AI into a singular, synchronized ecosystem.
+          </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 items-start">
-          {/* Left Details Panel */}
-          <div className="flex flex-col justify-between h-full lg:min-h-[400px]">
+        {/* Dynamic Bento Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+          
+          {/* Card 1: Large Bento Card (Hardware & Edge - Span 7) */}
+          <div className="md:col-span-7 group bg-[#F8F8F6] p-6 sm:p-8 rounded-none shadow-sm transition-all duration-300 hover:shadow-md flex flex-col justify-between overflow-hidden">
             <div>
-              <span className="font-display text-5xl leading-none tracking-[-0.06em] text-graphite/15 sm:text-7xl">
-                {activeSolution.index}
-              </span>
-              <h3 className="mt-4 font-display text-2xl font-bold tracking-[-0.03em] text-ink sm:text-3xl">
-                {activeSolution.title}
-              </h3>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-graphite/55 font-bold">
-                {activeSolution.subtitle}
-              </p>
-              
-              <p className="mt-4 text-sm leading-7 text-graphite/75 sm:text-[15px] max-w-2xl">
-                {activeSolution.detail}
+              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-2">
+                01 — Hardware & Mechatronics
               </p>
 
-              <div className="mt-6 border-t border-[#2B2B2B]/10 pt-5">
-                <h4 className="text-[10px] uppercase tracking-[0.42em] text-graphite/55 mb-3 font-bold">Core features</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
-                  {activeSolution.features.slice(0, 6).map((feat) => (
-                    <div key={feat} className="flex items-center gap-3 text-xs uppercase tracking-[0.15em] text-graphite/60 font-semibold group">
-                      <span className="h-px w-4 bg-graphite/30 transition-all group-hover:w-6 group-hover:bg-ink" />
-                      {feat}
-                    </div>
-                  ))}
-                </div>
+              <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
+                Physical Computing & Custom Sensor Nodes
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm leading-6 text-graphite/75 max-w-xl">
+                We engineer embedded circuits, custom microcontroller firmware, and environmental telemetry nodes 
+                designed for harsh field conditions, industrial automation, and real-time data collection.
+              </p>
+            </div>
+
+            {/* Visual Showcase */}
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              <div className="aspect-[4/3] rounded-none overflow-hidden bg-white shadow-sm">
+                <img
+                  src={iot2Img}
+                  alt="IoT Hardware Prototyping"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                />
+              </div>
+              <div className="aspect-[4/3] rounded-none overflow-hidden bg-white shadow-sm">
+                <img
+                  src={iot3Img}
+                  alt="Custom Circuit Design"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                />
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-3 border-t border-[#2B2B2B]/10 pt-5">
-              {activeSolution.links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 border border-ink/10 bg-white px-6 py-3 text-xs uppercase tracking-[0.2em] text-ink font-bold shadow-sm transition-all hover:border-ink hover:bg-ink hover:text-white hover:shadow-md"
-                >
-                  {link.label}
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </a>
-              ))}
-            </div>
+            <p className="mt-5 text-xs font-mono text-graphite/60">
+              ESP32 / STM32 · LoRaWAN & Cellular · Custom PCBs · Real-Time Telemetry
+            </p>
           </div>
 
-          {/* Right Visual Panel */}
-          <div className="relative">
-            {activeTab === 0 ? (
-              /* Haficonnect Tab Showcase */
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-wrap gap-2 border-b border-[#2B2B2B]/10 pb-3">
-                  {hafiImages.map((tab, idx) => (
-                    <button
-                      key={tab.label}
-                      onClick={() => setHafiSubTab(idx)}
-                      className={`px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] transition-all border-b-2 font-bold ${
-                        hafiSubTab === idx 
-                          ? 'border-ink text-ink' 
-                          : 'border-transparent text-graphite/45 hover:text-ink hover:border-ink/30'
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </div>
-                
-                <div className="overflow-hidden border border-[#2B2B2B]/12 bg-white p-3 shadow-md rounded-lg transition-all hover:shadow-lg">
-                  <div className="flex items-center gap-1.5 mb-3 bg-[#F0EFEB] px-3 py-2 rounded">
-                    <div className="flex gap-1">
-                      <span className="h-2 w-2 rounded-full bg-red-400/80" />
-                      <span className="h-2 w-2 rounded-full bg-yellow-400/80" />
-                      <span className="h-2 w-2 rounded-full bg-green-400/80" />
-                    </div>
-                    <span className="text-[9px] uppercase tracking-widest text-graphite/45 ml-2 font-mono">
-                      haficonnect.com/{hafiImages[hafiSubTab].label.toLowerCase().replace(' ', '-')}
-                    </span>
-                  </div>
-                  <div className="aspect-[4/3] w-full overflow-hidden bg-mist rounded">
-                    <img
-                      src={hafiImages[hafiSubTab].img}
-                      alt={hafiImages[hafiSubTab].label}
-                      className="h-full w-full object-cover transition-transform duration-700 hover:scale-102"
-                    />
-                  </div>
-                </div>
-                <p className="text-[9px] text-center uppercase tracking-widest text-graphite/45 font-semibold">
-                  Screenshot: {hafiImages[hafiSubTab].desc}
+          {/* Card 2: Tall Bento Card (Applied AI & Intelligence - Span 5) */}
+          <div className="md:col-span-5 group bg-ink text-white p-6 sm:p-8 rounded-none shadow-md transition-all duration-300 hover:shadow-xl flex flex-col justify-between overflow-hidden relative">
+            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
+            
+            <div className="relative z-10">
+              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-white/50 mb-2">
+                02 — Data & AI
+              </p>
+
+              <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-white">
+                Applied AI & Decision Analytics
+              </h3>
+              <p className="mt-2 text-xs sm:text-sm leading-6 text-white/70">
+                Transform incoming sensor logs and transactional databases into predictive models, automated alerts, and intelligent system workflows.
+              </p>
+
+              {/* Visual Showcase Card */}
+              <div className="mt-6 rounded-none overflow-hidden aspect-[16/10] bg-black/20 shadow-sm">
+                <img
+                  src={ai1Img}
+                  alt="Voltale Applied AI Architecture"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                />
+              </div>
+            </div>
+
+            <p className="relative z-10 mt-5 text-xs font-mono text-white/50">
+              PyTorch & Python · Anomaly Detection · Continuous Streams · Edge AI
+            </p>
+          </div>
+
+          {/* Card 3: Wide Full-Width Bento Card (Cloud Architecture & Web Software - Span 12) */}
+          <div className="md:col-span-12 group bg-[#F8F8F6] p-6 sm:p-8 rounded-none shadow-sm transition-all duration-300 hover:shadow-md">
+            <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
+              <div>
+                <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-2">
+                  03 — Scalable Enterprise Software
+                </p>
+
+                <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
+                  Mission-Critical Cloud Architectures & Reactive Platforms
+                </h3>
+                <p className="mt-2 text-xs sm:text-sm leading-7 text-graphite/75 max-w-2xl">
+                  We build modern web platforms, multi-tenant SaaS backends, and robust API layers. Designed for sub-second response times, 
+                  zero-downtime containerized deployments, and ironclad cryptographic data security.
+                </p>
+
+                <p className="mt-4 text-xs font-mono text-graphite/60">
+                  React & Next.js · Node.js & Go · PostgreSQL & Redis · Docker & Kubernetes · Zero-Trust Security
                 </p>
               </div>
-            ) : (
-              /* E-Nyandiko Web View Sandbox iframe */
-              <div className="overflow-hidden border border-[#2B2B2B]/12 bg-white p-3 shadow-md rounded-lg transition-all hover:shadow-lg">
-                <div className="flex items-center gap-1.5 mb-3 bg-[#F0EFEB] px-3 py-2 rounded">
-                  <div className="flex gap-1">
-                    <span className="h-2 w-2 rounded-full bg-red-400/80" />
-                    <span className="h-2 w-2 rounded-full bg-yellow-400/80" />
-                    <span className="h-2 w-2 rounded-full bg-green-400/80" />
-                  </div>
-                  <span className="text-[9px] uppercase tracking-widest text-graphite/45 ml-2 font-mono">
-                    enyandiko.vercel.app
-                  </span>
-                  <a
-                    href="https://enyandiko.vercel.app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-auto bg-ink px-2.5 py-1 text-[8px] uppercase tracking-widest font-bold text-white rounded transition-colors hover:bg-graphite"
-                  >
-                    View site
-                  </a>
-                </div>
-                
-                <div className="w-full overflow-hidden border border-[#2B2B2B]/10 rounded h-[300px] sm:h-[380px]">
-                  <iframe
-                    src="https://enyandiko.vercel.app"
-                    className="w-full h-[400px] sm:h-[500px] pointer-events-none lg:pointer-events-auto"
-                    title="E-Nyandiko Platform"
-                    loading="lazy"
-                    sandbox="allow-scripts allow-same-origin allow-forms"
-                    style={{ border: 'none', marginTop: '-40px' }}
+
+              {/* Visual Showcase Screen */}
+              <div className="rounded-none overflow-hidden bg-white shadow-sm group-hover:shadow-md transition-all">
+                <div className="aspect-[16/10] overflow-hidden rounded-none">
+                  <img
+                    src={software1Img}
+                    alt="Voltale Enterprise Software Platform"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
                   />
                 </div>
               </div>
-            )}
+            </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 }
 
-// Enhanced Services Section
-function ServicesSection() {
+// 3. Interactive Strategic Domain Matrix with Rich Imagery & Specs
+function DomainMatrix() {
+  const [activeDomain, setActiveDomain] = useState(0);
+
+  const domainList = [
+    {
+      id: 'software',
+      name: 'Custom Software & Web Platforms',
+      badge: 'Full-Stack & Cloud Native',
+      image: software2Img,
+      summary: 'Architecting resilient SaaS, web applications, and high-load APIs with modern component-driven frontends and fault-tolerant backends.',
+      stack: ['React / Next.js', 'Node.js / Express', 'PostgreSQL', 'TailwindCSS', 'Docker'],
+      impact: 'Powering automated enterprise workflows, digital marketplaces, and consumer portals.'
+    },
+    {
+      id: 'iot',
+      name: 'IoT & Smart Hardware Automation',
+      badge: 'Hardware & Edge Computing',
+      image: iot1Img,
+      summary: 'Designing integrated microcontroller systems, environmental sensor arrays, and remote telemetry nodes for real-time monitoring.',
+      stack: ['ESP32 / STM32', 'MQTT / WebSockets', 'Embedded C/C++', 'LoRaWAN', 'Custom PCBs'],
+      impact: 'Enabling real-time equipment tracking, automated triggers, and mission-critical telemetry.'
+    },
+    {
+      id: 'cloud',
+      name: 'Cloud Infrastructure & DevOps',
+      badge: 'Resilient Architecture',
+      image: it1Img,
+      summary: 'Deploying high-availability cloud configurations with continuous integration, robust automated backups, and zero-downtime microservices.',
+      stack: ['AWS / GCP', 'Docker Containers', 'Linux Systems', 'CI/CD Pipelines', 'Nginx'],
+      impact: 'Ensuring 99.99% system availability, sub-second response times, and hardened cybersecurity.'
+    },
+    {
+      id: 'ai',
+      name: 'Applied AI & Intelligent Analytics',
+      badge: 'Data Intelligence',
+      image: ai2Img,
+      summary: 'Engineering custom machine learning pipelines to analyze complex data sets, detect anomalies, and drive intelligent decision automation.',
+      stack: ['Python', 'PyTorch / TensorFlow', 'Pandas / NumPy', 'REST AI Microservices', 'Timeseries Models'],
+      impact: 'Turning massive continuous telemetry into predictive operational foresight.'
+    },
+    {
+      id: 'agritech',
+      name: 'Agritech Innovation Systems',
+      badge: 'Modern Agriculture',
+      image: iot2Img,
+      summary: 'Empowering commercial and smallholder agriculture through automated soil moisture sensing, climatic monitors, and data platforms.',
+      stack: ['Soil Moisture Arrays', 'Solar Harvesting Nodes', 'SMS / Web Dashboard', 'Field Telemetry'],
+      impact: 'Optimizing irrigation water usage and maximizing crop yields across diverse terrains.'
+    },
+    {
+      id: 'healthtech',
+      name: 'Healthtech & Secure Registries',
+      badge: 'Security & Compliance',
+      image: it2Img,
+      summary: 'Developing compliant patient management systems, clinical databases, and national cryptographic device registries like E-Nyandiko.',
+      stack: ['Encrypted Storage', 'Audit Trail Logging', 'Role-Based Authentication', 'REST Endpoints'],
+      impact: 'Protecting sensitive health records and securing consumer electronics against theft.'
+    },
+    {
+      id: 'education',
+      name: 'Talent Incubation & Internships',
+      badge: 'Human Capital',
+      image: business1Img,
+      summary: 'Mentoring and immersing university engineering students directly into live hardware and software deployments to build Africa’s next tech leaders.',
+      stack: ['Live Code Reviews', 'Hardware Lab Sprints', 'Agile Scrum', 'Production Deployments'],
+      impact: 'Developing high-caliber engineers equipped with both mechatronics and software rigor.'
+    }
+  ];
+
+  const current = domainList[activeDomain];
+
   return (
-    <section id="services" className="bg-white text-ink py-10 md:py-14 line-figures-light">
+    <section className="bg-[#F8F8F6] text-ink py-16 md:py-20 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="max-w-2xl mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="h-px w-8 bg-graphite/30" />
-            <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-semibold">What we deliver</p>
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-4">
+          <div className="max-w-2xl">
+            <p className="text-xs uppercase tracking-[0.3em] text-graphite/50 font-semibold font-mono mb-2">
+              Our Scope
+            </p>
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-ink">
+              Five strategic domains. One cohesive standard.
+            </h2>
           </div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-[-0.04em] text-ink mt-2">
-            Expertise across key domains
-          </h2>
-          <p className="mt-4 text-sm text-graphite/70 max-w-md leading-relaxed">
-            Each service area is staffed by specialists who understand how their work connects to the bigger picture.
-          </p>
-        </div>
-
-        {/* Displaying Top 6 Services for a perfectly balanced 3-column grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.slice(0, 6).map((service, index) => (
-            <Reveal key={service.title} delay={index * 80}>
-              <div className="group relative border border-ink/5 bg-[#F8F8F6] p-8 shadow-sm transition-all duration-300 hover:border-ink/15 hover:bg-[#F0EFEB] hover:-translate-y-1 hover:shadow-md rounded-lg">
-                <div className="flex items-start justify-between">
-                  <span className="text-xs font-bold uppercase tracking-widest text-graphite/35 font-mono">
-                    {service.index}
-                  </span>
-                  <span className="text-lg opacity-20 group-hover:opacity-40 transition-opacity">→</span>
-                </div>
-                <h3 className="mt-6 font-display text-lg font-bold tracking-[-0.02em] text-ink sm:text-xl">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-xs leading-6 text-graphite/70 font-medium">
-                  {service.text}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-10 max-w-xl border-l-2 border-[#2B2B2B]/12 pl-6">
-          <p className="text-[10px] uppercase tracking-[0.42em] text-graphite/45 font-bold">Cross-domain synergy</p>
-          <p className="mt-2 text-sm leading-7 text-graphite/70">
-            We don't silo expertise. IoT informs AI, infrastructure supports software, 
-            and strategy drives them all. Integrated delivery for measurable outcomes.
-          </p>
-        </div>
-
-        <div className="mt-10 text-center">
           <Link
-            to="/services"
-            className="group inline-block border border-ink/15 px-10 py-4 text-xs font-bold uppercase tracking-[0.3em] text-ink transition-all hover:bg-ink hover:text-white hover:shadow-lg"
+            to="/solutions"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-ink hover:gap-3 transition-all"
           >
-            <span className="inline-flex items-center gap-2">
-              View all services
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </span>
+            Explore Flagship Solutions <span className="text-sm">→</span>
           </Link>
         </div>
-      </div>
-    </section>
-  );
-}
 
-// Enhanced Industries Section
-function IndustriesSection() {
-  return (
-    <section className="bg-[#F8F8F6] text-ink py-10 md:py-14 border-t border-[#2B2B2B]/10">
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="max-w-2xl mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="h-px w-8 bg-graphite/30" />
-            <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-semibold">Industries we serve</p>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-ink mt-2">
-            Tailored digital expertise across domains
-          </h2>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {industries.map((industry, index) => (
-            <Reveal key={industry.name} delay={index * 60}>
-              <div className="group border border-ink/5 bg-white p-6 shadow-sm transition-all duration-300 hover:border-ink/15 hover:shadow-md rounded-lg flex flex-col gap-3 h-full">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{industry.icon}</span>
-                  <h3 className="font-display text-xs font-bold uppercase tracking-wider text-ink">
-                    {industry.name}
-                  </h3>
+        {/* Interactive Matrix Display */}
+        <div className="grid lg:grid-cols-[1fr_1.35fr] gap-6 items-start">
+          
+          {/* Domain list selector & mobile inline accordion */}
+          <div className="flex flex-col gap-2">
+            {domainList.map((domain, index) => {
+              const isActive = activeDomain === index;
+              return (
+                <div key={domain.id} className="flex flex-col">
+                  <button
+                    onClick={() => setActiveDomain(activeDomain === index ? -1 : index)}
+                    className={`group flex items-center justify-between p-4 rounded-none text-left transition-all duration-300 ${
+                      isActive
+                        ? 'bg-white shadow-sm lg:translate-x-1.5'
+                        : 'bg-white/50 hover:bg-white lg:hover:translate-x-1'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <span className={`font-mono text-xs font-semibold ${isActive ? 'text-ink' : 'text-graphite/40'}`}>
+                        0{index + 1}
+                      </span>
+                      <div>
+                        <h3 className={`font-display text-sm font-semibold tracking-tight ${isActive ? 'text-ink' : 'text-graphite/70'}`}>
+                          {domain.name}
+                        </h3>
+                      </div>
+                    </div>
+                    <span className={`text-sm transition-transform duration-300 ${isActive ? 'rotate-90 lg:rotate-0 lg:translate-x-1 font-bold text-ink' : 'opacity-20'}`}>
+                      →
+                    </span>
+                  </button>
+
+                  {/* Mobile inline detail panel (opens directly under selected domain) */}
+                  {isActive && (
+                    <div className="lg:hidden bg-white p-5 border-t border-[#2B2B2B]/10 rounded-none shadow-sm flex flex-col gap-3.5 mb-2 animate-fadeIn">
+                      <p className="text-[10px] font-mono font-semibold uppercase tracking-wider text-graphite/50">
+                        Domain 0{index + 1} of 0{domainList.length} — {domain.badge}
+                      </p>
+
+                      <div className="rounded-none overflow-hidden aspect-[16/9] shadow-sm">
+                        <img
+                          src={domain.image}
+                          alt={domain.name}
+                          className="w-full h-full object-cover rounded-none"
+                        />
+                      </div>
+
+                      <h4 className="font-display text-lg font-bold tracking-[-0.02em] text-ink">
+                        {domain.name}
+                      </h4>
+
+                      <p className="text-xs leading-6 text-graphite/80 font-normal">
+                        {domain.summary}
+                      </p>
+
+                      <div className="pt-2.5 border-t border-[#2B2B2B]/10">
+                        <p className="text-xs font-mono text-graphite/60">
+                          {domain.stack.join(' · ')}
+                        </p>
+                      </div>
+
+                      <p className="text-xs text-graphite/75 leading-relaxed">
+                        <strong className="text-ink font-semibold">Impact:</strong> {domain.impact}
+                      </p>
+
+                      <div className="pt-3 border-t border-[#2B2B2B]/10 flex flex-wrap items-center justify-between gap-3">
+                        <Link
+                          to="/solutions"
+                          className="group inline-flex items-center gap-2 bg-ink text-white px-4 py-2 text-xs uppercase tracking-[0.2em] font-bold rounded-none hover:bg-graphite transition-all shadow-sm"
+                        >
+                          <span>Explore Solutions</span>
+                          <span className="transition-transform group-hover:translate-x-1">→</span>
+                        </Link>
+                        <Link
+                          to="/about"
+                          className="text-xs font-bold uppercase tracking-[0.2em] text-graphite/60 hover:text-ink transition-colors"
+                        >
+                          Our Process
+                        </Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className="text-[11px] leading-5 text-graphite/70 font-medium">
-                  {industry.description}
+              );
+            })}
+          </div>
+
+          {/* Desktop right domain preview card */}
+          {current && (
+            <div className="hidden lg:flex bg-white p-6 sm:p-8 rounded-none shadow-sm flex-col justify-between overflow-hidden sticky top-24">
+              <div>
+                <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-3">
+                  Domain 0{activeDomain + 1} of 0{domainList.length} — {current.badge}
+                </p>
+
+                {/* Image */}
+                <div className="rounded-none overflow-hidden aspect-[16/8] shadow-sm">
+                  <img
+                    src={current.image}
+                    alt={current.name}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-102 rounded-none"
+                  />
+                </div>
+
+                <h3 className="mt-5 font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
+                  {current.name}
+                </h3>
+
+                <p className="mt-2 text-xs sm:text-sm leading-6 text-graphite/80 font-normal">
+                  {current.summary}
+                </p>
+
+                <div className="mt-4 pt-3 border-t border-[#2B2B2B]/10">
+                  <p className="text-xs font-mono text-graphite/60">
+                    {current.stack.join(' · ')}
+                  </p>
+                </div>
+
+                <p className="mt-3 text-xs text-graphite/75 leading-relaxed">
+                  <strong className="text-ink font-semibold">Impact:</strong> {current.impact}
                 </p>
               </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
-// Enhanced Testimonials Section
-function TestimonialsSection() {
-  return (
-    <section className="bg-white text-ink py-10 md:py-14 border-t border-[#2B2B2B]/10">
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
-        <div className="max-w-2xl mb-8">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="h-px w-8 bg-graphite/30" />
-            <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-semibold">Testimonials</p>
-          </div>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-[-0.03em] text-ink mt-2">
-            What our clients say
-          </h2>
-        </div>
-        <div className="grid sm:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <Reveal key={index} delay={index * 100}>
-              <div className="group border border-ink/5 bg-[#F8F8F6] p-6 sm:p-8 rounded-lg shadow-sm transition-all duration-300 hover:border-ink/10 hover:shadow-md flex flex-col justify-between h-full">
-                <div>
-                  <p className="text-sm italic leading-7 text-graphite/75 font-medium">
-                    "{testimonial.quote}"
-                  </p>
-                </div>
+              <div className="mt-6 pt-4 border-t border-[#2B2B2B]/10 flex flex-wrap items-center justify-between gap-3">
+                <Link
+                  to="/solutions"
+                  className="group inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-bold rounded-none hover:bg-graphite transition-all shadow-sm"
+                >
+                  <span>Explore Solutions</span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+                <Link
+                  to="/about"
+                  className="text-xs font-bold uppercase tracking-[0.2em] text-graphite/60 hover:text-ink transition-colors"
+                >
+                  Learn How We Deliver
+                </Link>
               </div>
-            </Reveal>
-          ))}
+            </div>
+          )}
+
         </div>
       </div>
     </section>
   );
 }
 
-// Enhanced Approach Section
-function ApproachSection() {
-  return (
-    <section id="approach" className="bg-[#F8F8F6] text-ink py-10 md:py-14 border-t border-[#2B2B2B]/10">
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-        <SectionHeading
-          label="Our approach"
-          title="Three principles that guide every engagement."
-          description="Voltale is built on a foundation of precision, innovation, and genuine partnership. These values shape how we work and what we deliver."
-        />
-
-        <div className="grid gap-8">
-          <div className="relative h-48 overflow-hidden border border-[#2B2B2B]/10 sm:h-64 rounded-lg shadow-sm group">
-            <img
-              src="/images/approach-glow.jpg"
-              alt="Technology innovation concept"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-          </div>
-          
-          <div className="grid grid-cols-2 gap-3">
-            {['Discover', 'Design', 'Develop', 'Deploy'].map((step, index) => (
-              <Reveal key={step} delay={index * 60}>
-                <div className="group border border-ink/5 bg-white/80 p-5 text-center rounded-lg shadow-sm transition-all duration-300 hover:border-ink/15 hover:shadow-md">
-                  <p className="text-[10px] uppercase tracking-widest text-graphite/45 font-mono group-hover:text-ink transition-colors">
-                    0{index + 1}
-                  </p>
-                  <p className="mt-2 font-display text-xs font-bold uppercase tracking-wider text-ink group-hover:scale-105 transition-transform">
-                    {step}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="grid gap-0">
-            {values.map((value, index) => (
-              <Reveal key={value.title} delay={index * 100}>
-                <article className="grid gap-4 border-t border-[#2B2B2B]/10 py-4 sm:grid-cols-[auto_1fr] sm:gap-6 sm:py-5 group">
-                  <div className="flex items-center gap-3">
-                    <p className="text-[10px] uppercase tracking-widest text-graphite/45 font-mono group-hover:text-ink transition-colors">
-                      {value.index}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-bold tracking-[-0.03em] text-ink sm:text-2xl">
-                      {value.title}
-                    </h3>
-                    <p className="mt-3 max-w-2xl text-xs leading-6 text-graphite/75 font-medium">
-                      {value.text}
-                    </p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Enhanced Contact Section
+// 4. Direct Contact & Consultation Section
 function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -642,102 +509,116 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-ink text-white py-10 md:py-14 border-t border-white/5">
-      <div className="absolute -right-[20%] -top-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-blue-500/5 blur-[100px]" />
-      <div className="absolute -left-[20%] -bottom-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[100px]" />
-      
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:px-10 items-center">
+    <section id="contact" className="bg-white text-ink py-16 md:py-24 border-t border-[#2B2B2B]/10">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 px-5 sm:px-8 lg:px-10 items-start">
+        {/* Left Side: Contact Information (1/2 width) */}
         <Reveal>
           <div>
-            <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-white/20" />
-              <p className="text-[10px] uppercase tracking-[0.42em] text-white/50 font-mono">Contact</p>
-            </div>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl leading-[0.92] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl font-extrabold">
-              Ready to transform?
-            </h2>
-            <p className="mt-6 max-w-lg text-sm leading-7 text-white/70">
-              Whether you need a complete digital ecosystem or a single domain solution,
-              Voltale has the expertise to deliver. Reach out and tell us about your vision.
+            <p className="text-xs uppercase tracking-[0.3em] text-graphite/50 font-semibold font-mono mb-2">
+              Get In Touch
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-xs">
-              <a
-                href="mailto:info@voltale.com"
-                className="group text-[10px] font-bold uppercase tracking-[0.3em] text-white transition-all hover:tracking-[0.4em] self-start"
-              >
-                info@voltale.com
-                <span className="block h-px w-0 bg-white/30 transition-all group-hover:w-full" />
-              </a>
-              <div className="hidden sm:block text-white/20">|</div>
-              <span className="text-white/60 font-medium tracking-wider">+250796885690</span>
-              <div className="hidden sm:block text-white/20">|</div>
-              <span className="text-white/60 font-medium tracking-wider">Kigali, Rwanda</span>
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[-0.03em] text-ink">
+              Ready to transform your technology?
+            </h2>
+            <p className="mt-4 max-w-lg text-sm leading-7 text-graphite/75">
+              Whether you need to prototype an IoT hardware node, scale a mission-critical web system, 
+              or deploy specialized AI intelligence, our team in Kigali is ready to collaborate.
+            </p>
+
+            <div className="mt-8 space-y-3 text-xs text-graphite/80 font-mono">
+              <div className="flex items-center gap-3">
+                <span className="text-graphite/40 uppercase tracking-widest text-[10px] w-20">Email</span>
+                <a
+                  href="mailto:info@voltaleltd.com"
+                  className="font-semibold text-ink hover:underline transition-all"
+                >
+                  info@voltaleltd.com
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-graphite/40 uppercase tracking-widest text-[10px] w-20">Phone</span>
+                <span className="text-ink font-semibold">+250 796 885 690</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-graphite/40 uppercase tracking-widest text-[10px] w-20">Location</span>
+                <span className="text-ink font-semibold">Kigali, Rwanda</span>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-[#2B2B2B]/10 flex items-center gap-4">
+              <span className="text-xs uppercase tracking-wider text-graphite/50 font-mono">Connect</span>
+              <SocialLinks iconClassName="w-4 h-4 text-ink hover:text-graphite" />
             </div>
           </div>
         </Reveal>
 
+        {/* Right Side: Form (1/2 width) */}
         <Reveal delay={120}>
-          <div className="border border-ink/5 bg-white p-6 sm:p-8 rounded-xl shadow-2xl text-ink">
-            <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="bg-[#F8F8F6] p-6 sm:p-8 rounded-none shadow-sm">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="text-[10px] uppercase tracking-[0.3em] text-graphite/55 font-bold block mb-2">
-                  Name
+                <label className="text-xs uppercase tracking-wider text-graphite/60 font-semibold block mb-1.5 font-mono">
+                  Your Name
                 </label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/10 bg-transparent py-2.5 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#2B2B2B]/30 placeholder:text-graphite/30"
-                  placeholder="Your name"
+                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-ink placeholder:text-graphite/30"
+                  placeholder="e.g. Jean Dupont"
                   required
                 />
               </div>
+
               <div>
-                <label className="text-[10px] uppercase tracking-[0.3em] text-graphite/55 font-bold block mb-2">
-                  Email
+                <label className="text-xs uppercase tracking-wider text-graphite/60 font-semibold block mb-1.5 font-mono">
+                  Business Email
                 </label>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/10 bg-transparent py-2.5 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#2B2B2B]/30 placeholder:text-graphite/30"
-                  placeholder="you@company.com"
+                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-ink placeholder:text-graphite/30"
+                  placeholder="jean@company.com"
                   required
                 />
               </div>
+
               <div>
-                <label className="text-[10px] uppercase tracking-[0.3em] text-graphite/55 font-bold block mb-2">
-                  Message
+                <label className="text-xs uppercase tracking-wider text-graphite/60 font-semibold block mb-1.5 font-mono">
+                  Project Scope & Goals
                 </label>
                 <textarea
-                  rows="4"
+                  rows="3"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/10 bg-transparent py-2.5 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#2B2B2B]/30 placeholder:text-graphite/30 resize-none"
-                  placeholder="Tell us about your project..."
+                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-ink placeholder:text-graphite/30 resize-none"
+                  placeholder="Describe your technical objectives or requirements..."
                   required
                 />
               </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative overflow-hidden w-full bg-[#111111] hover:bg-[#2B2B2B] px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] text-white transition-all rounded shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative overflow-hidden w-full bg-[#111111] hover:bg-[#2B2B2B] px-8 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all rounded-none shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="relative z-10">
-                  {isSubmitting ? 'Sending...' : submitStatus === 'success' ? '✓ Message Sent!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Send message'}
+                  {isSubmitting ? 'Transmitting Request...' : submitStatus === 'success' ? '✓ Request Dispatched!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Transmit Consultation Request'}
                 </span>
                 {!isSubmitting && submitStatus !== 'success' && (
                   <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                 )}
               </button>
+
               {submitStatus === 'success' && (
                 <p className="text-center text-xs font-medium text-emerald-600">
-                  Thank you! Your message has been sent successfully.
+                  Thank you! Your message has been sent successfully. Our team will review and reply within 24 hours.
                 </p>
               )}
               {submitStatus === 'error' && (
                 <p className="text-center text-xs font-medium text-rose-600">
-                  Failed to send message. Please try again or email us at info@voltale.com.
+                  Failed to send message. Please try again or email us directly at info@voltaleltd.com.
                 </p>
               )}
             </form>
@@ -748,40 +629,18 @@ function ContactSection() {
   );
 }
 
-// Enhanced Footer
-function Footer() {
-  return (
-    <footer className="bg-[#0B0B0A] py-10 text-white/50 border-t border-white/5">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-5 text-[9px] uppercase tracking-[0.35em] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Voltale" className="h-6 w-auto invert opacity-80" />
-          <span className="font-semibold text-white/40">innovation driven</span>
-        </div>
-        <div className="flex items-center gap-8 font-semibold">
-          <a href="mailto:info@voltale.com" className="hover:text-white/70 transition-colors">
-            info@voltale.com
-          </a>
-          <span className="text-white/20">© 2026</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
-
+// Main HomePage Component
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-ink antialiased">
       <main>
         <Hero />
-        <AboutSection />
-        <SolutionsSection />
-        <ServicesSection />
-        <IndustriesSection />
-        <TestimonialsSection />
-        <ApproachSection />
+        <ParadigmSection />
+        <DomainMatrix />
         <ContactSection />
       </main>
       <Footer />
     </div>
   );
 }
+

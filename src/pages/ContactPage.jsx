@@ -1,10 +1,47 @@
 import { useState } from 'react';
 import Reveal from '../components/Reveal';
-import logo from '../assets/images/logo_black.png';
+import Footer from '../components/Footer';
+import SocialLinks from '../components/SocialLinks';
 
-// ContactSection Component
-function ContactSection() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+const domainOptions = [
+  'General Inquiry',
+  'Software Development',
+  'AI & Data Analytics',
+  'IoT & Smart Hardware',
+  'Network & Cloud',
+  'Agritech Solutions',
+  'Healthtech Platform',
+  'Training & Internship'
+];
+
+const faqs = [
+  {
+    question: 'How quickly can Voltale start a new engagement?',
+    answer: 'Following our initial discovery session, we typically provide an architecture blueprint and project roadmap within 3 to 5 business days.'
+  },
+  {
+    question: 'Do you develop both physical hardware and cloud software?',
+    answer: 'Yes. Voltale specializes in cross-domain engineering, bridging embedded IoT devices, edge controllers, and custom sensors directly with secure cloud platforms.'
+  },
+  {
+    question: 'How do you handle intellectual property and confidentiality?',
+    answer: 'All client projects are covered by comprehensive non-disclosure agreements (NDAs). You retain 100% ownership of your proprietary code, models, and data.'
+  },
+  {
+    question: 'Can you support deployments outside of Rwanda?',
+    answer: 'Absolutely. While headquartered in Kigali, our engineering team deploys cloud ecosystems, IoT networks, and software solutions for clients across East Africa and globally.'
+  }
+];
+
+export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    organization: '',
+    domain: 'General Inquiry',
+    message: ''
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -23,15 +60,25 @@ function ContactSection() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
+          phone: formData.phone || 'Not Specified',
+          organization: formData.organization || 'Not Specified',
+          domain: formData.domain,
           message: formData.message,
-          _subject: `New message from ${formData.name} (Voltale Contact Form)`,
+          _subject: `New inquiry from ${formData.name} [${formData.domain}]`,
           _template: "table"
         })
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          organization: '',
+          domain: 'General Inquiry',
+          message: ''
+        });
       } else {
         setSubmitStatus('error');
       }
@@ -39,143 +86,266 @@ function ContactSection() {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus(null), 5000);
+      setTimeout(() => setSubmitStatus(null), 6000);
     }
   };
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-ink text-white pt-10 pb-24 md:pt-16 md:pb-32">
-      <div className="absolute -right-[20%] -top-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-blue-500/5 blur-[100px]" />
-      <div className="absolute -left-[20%] -bottom-[20%] -z-10 h-[600px] w-[600px] rounded-full bg-purple-500/5 blur-[100px]" />
-      
-      <div className="mx-auto grid w-full max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:px-10 items-center">
-        <Reveal>
-          <div>
-            <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-white/20" />
-              <p className="text-[10px] uppercase tracking-[0.42em] text-white/50 font-mono">Contact</p>
-            </div>
-            <h2 className="mt-6 max-w-2xl font-display text-4xl leading-[0.92] tracking-[-0.05em] text-white sm:text-5xl lg:text-6xl font-extrabold">
-              Ready to transform?
-            </h2>
-            <p className="mt-6 max-w-lg text-sm leading-7 text-white/70">
-              Whether you need a complete digital ecosystem or a single domain solution,
-              Voltale has the expertise to deliver. Reach out and tell us about your vision.
+    <div className="min-h-screen bg-[#F8F8F6] text-[#111111] pt-16">
+
+      {/* Page Header */}
+      <section className="relative overflow-hidden pt-5 pb-5 sm:pt-7 sm:pb-7 border-b border-[#2B2B2B]/10">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+          <Reveal>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-graphite/50 font-mono font-semibold mb-1.5">
+              Contact & Engagements
             </p>
-            <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-xs">
-              <a
-                href="mailto:info@voltale.com"
-                className="group text-[10px] font-bold uppercase tracking-[0.3em] text-white transition-all hover:tracking-[0.4em] self-start"
-              >
-                info@voltale.com
-                <span className="block h-px w-0 bg-white/30 transition-all group-hover:w-full" />
-              </a>
-              <div className="hidden sm:block text-white/20">|</div>
-              <span className="text-white/60 font-medium tracking-wider">+250796885690</span>
-              <div className="hidden sm:block text-white/20">|</div>
-              <span className="text-white/60 font-medium tracking-wider">Kigali, Rwanda</span>
-            </div>
-          </div>
-        </Reveal>
+          </Reveal>
+          <Reveal delay={80}>
+            <h1 className="max-w-3xl font-display text-lg sm:text-xl lg:text-2xl font-bold leading-snug tracking-[-0.03em] text-ink">
+              Start the conversation. We&apos;re here to engineer your vision.
+            </h1>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mt-2 max-w-2xl text-xs sm:text-sm leading-6 text-graphite/75">
+              Whether you require an enterprise digital ecosystem, specialized IoT architecture, or an integrated technology partner, Voltale is ready to collaborate.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
-        <Reveal delay={120}>
-          <div className="border border-white/5 bg-white p-6 sm:p-8 rounded-xl shadow-2xl text-ink">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div>
-                <label className="text-[10px] uppercase tracking-[0.3em] text-graphite/55 font-bold block mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/10 bg-transparent py-2.5 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#2B2B2B]/30 placeholder:text-graphite/30"
-                  placeholder="Your name"
-                  required
-                />
+      {/* Direct Channels Cards */}
+      <section className="py-6 sm:py-8 border-b border-[#2B2B2B]/10">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            
+            <Reveal delay={50}>
+              <div className="bg-white p-4 sm:p-5 border border-[#2B2B2B]/10 rounded-none">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-graphite/50 font-mono font-semibold">
+                  Direct Inquiries
+                </p>
+                <h3 className="mt-1.5 font-display text-sm sm:text-base font-bold text-ink">
+                  Projects & Solutions
+                </h3>
+                <p className="mt-1 text-xs text-graphite/70 leading-5">
+                  For new project scopes, system audits, and engineering partnerships.
+                </p>
+                <div className="mt-3 flex flex-col gap-0.5 text-xs font-semibold text-ink">
+                  <a href="mailto:info@voltaleltd.com" className="hover:underline">
+                    info@voltaleltd.com
+                  </a>
+                  <a href="tel:+250796885690" className="text-graphite/70 hover:text-ink">
+                    +250 796 885 690
+                  </a>
+                </div>
               </div>
-              <div>
-                <label className="text-[10px] uppercase tracking-[0.3em] text-graphite/55 font-bold block mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/10 bg-transparent py-2.5 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#2B2B2B]/30 placeholder:text-graphite/30"
-                  placeholder="you@company.com"
-                  required
-                />
+            </Reveal>
+
+            <Reveal delay={100}>
+              <div className="bg-white p-4 sm:p-5 border border-[#2B2B2B]/10 rounded-none">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-graphite/50 font-mono font-semibold">
+                  Engineering Hub
+                </p>
+                <h3 className="mt-1.5 font-display text-sm sm:text-base font-bold text-ink">
+                  Kigali, Rwanda
+                </h3>
+                <p className="mt-1 text-xs text-graphite/70 leading-5">
+                  East Africa Central Time (CAT / UTC+2). Available for in-person and remote sessions.
+                </p>
+                <div className="mt-3 text-xs text-graphite/80 font-mono">
+                  <span>Mon – Sat: 08:00 – 18:00 CAT</span>
+                </div>
               </div>
-              <div>
-                <label className="text-[10px] uppercase tracking-[0.3em] text-graphite/55 font-bold block mb-2">
-                  Message
-                </label>
-                <textarea
-                  rows="4"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/10 bg-transparent py-2.5 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#2B2B2B]/30 placeholder:text-graphite/30 resize-none"
-                  placeholder="Tell us about your project..."
-                  required
-                />
+            </Reveal>
+
+            <Reveal delay={150}>
+              <div className="bg-white p-4 sm:p-5 border border-[#2B2B2B]/10 rounded-none sm:col-span-2 lg:col-span-1">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-graphite/50 font-mono font-semibold">
+                  Talent & Partnerships
+                </p>
+                <h3 className="mt-1.5 font-display text-sm sm:text-base font-bold text-ink">
+                  Careers & Academic
+                </h3>
+                <p className="mt-1 text-xs text-graphite/70 leading-5">
+                  Explore internship opportunities, research collaborations, and open roles.
+                </p>
+                <div className="mt-3 text-xs font-semibold text-ink">
+                  <a href="mailto:info@voltaleltd.com?subject=Career%20Inquiry" className="hover:underline">
+                    info@voltaleltd.com
+                  </a>
+                </div>
               </div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="group relative overflow-hidden w-full bg-[#111111] hover:bg-[#2B2B2B] px-8 py-4 text-xs font-bold uppercase tracking-[0.3em] text-white transition-all rounded shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <span className="relative z-10">
-                  {isSubmitting ? 'Sending...' : submitStatus === 'success' ? '✓ Message Sent!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Send message'}
-                </span>
-                {!isSubmitting && submitStatus !== 'success' && (
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+            </Reveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Main Intake Section (Centered Form) */}
+      <section className="py-8 sm:py-12">
+        <div className="mx-auto w-full max-w-xl px-5 sm:px-8">
+          <Reveal>
+            <div className="bg-white p-5 sm:p-7 border border-[#2B2B2B]/10 rounded-none shadow-sm">
+              <h3 className="font-display text-base sm:text-lg font-bold text-ink">
+                Send us a message
+              </h3>
+              <p className="mt-1 text-xs text-graphite/70 leading-5">
+                Fill out the details below and an engineering lead will get back to you promptly.
+              </p>
+
+              <form onSubmit={handleSubmit} className="mt-5 space-y-3.5">
+                
+                {/* Domain Selector Dropdown */}
+                <div>
+                  <label className="text-[9px] uppercase tracking-[0.25em] text-graphite/60 font-mono font-semibold block mb-1">
+                    Domain / Area of Interest
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={formData.domain}
+                      onChange={(e) => setFormData({ ...formData, domain: e.target.value })}
+                      className="w-full appearance-none border border-[#2B2B2B]/15 bg-[#F8F8F6] px-3 py-2 pr-8 text-xs sm:text-sm font-semibold text-ink outline-none transition-colors focus:border-[#111111] rounded-none cursor-pointer"
+                    >
+                      {domainOptions.map((opt) => (
+                        <option key={opt} value={opt} className="bg-white text-ink py-1">
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-graphite/60">
+                      <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Full Name */}
+                <div>
+                  <label className="text-[9px] uppercase tracking-[0.25em] text-graphite/60 font-mono font-semibold block mb-1">
+                    Full Name *
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full border border-[#2B2B2B]/15 bg-[#F8F8F6] px-3 py-2 text-xs sm:text-sm font-semibold text-ink outline-none transition-colors focus:border-[#111111] rounded-none placeholder:text-graphite/30"
+                    placeholder="e.g. Jean Doe"
+                    required
+                  />
+                </div>
+
+                {/* Email Address */}
+                <div>
+                  <label className="text-[9px] uppercase tracking-[0.25em] text-graphite/60 font-mono font-semibold block mb-1">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full border border-[#2B2B2B]/15 bg-[#F8F8F6] px-3 py-2 text-xs sm:text-sm font-semibold text-ink outline-none transition-colors focus:border-[#111111] rounded-none placeholder:text-graphite/30"
+                    placeholder="you@company.com"
+                    required
+                  />
+                </div>
+
+                {/* Phone Number */}
+                <div>
+                  <label className="text-[9px] uppercase tracking-[0.25em] text-graphite/60 font-mono font-semibold block mb-1">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full border border-[#2B2B2B]/15 bg-[#F8F8F6] px-3 py-2 text-xs sm:text-sm font-semibold text-ink outline-none transition-colors focus:border-[#111111] rounded-none placeholder:text-graphite/30"
+                    placeholder="+250 796 885 690"
+                  />
+                </div>
+
+                {/* Organization */}
+                <div>
+                  <label className="text-[9px] uppercase tracking-[0.25em] text-graphite/60 font-mono font-semibold block mb-1">
+                    Organization / Company (Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.organization}
+                    onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                    className="w-full border border-[#2B2B2B]/15 bg-[#F8F8F6] px-3 py-2 text-xs sm:text-sm font-semibold text-ink outline-none transition-colors focus:border-[#111111] rounded-none placeholder:text-graphite/30"
+                    placeholder="Company or project name"
+                  />
+                </div>
+
+                {/* Project Details */}
+                <div>
+                  <label className="text-[9px] uppercase tracking-[0.25em] text-graphite/60 font-mono font-semibold block mb-1">
+                    Project Details / Message *
+                  </label>
+                  <textarea
+                    rows="4"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full border border-[#2B2B2B]/15 bg-[#F8F8F6] px-3 py-2 text-xs sm:text-sm font-semibold text-ink outline-none transition-colors focus:border-[#111111] rounded-none placeholder:text-graphite/30 resize-none"
+                    placeholder="Tell us about your project requirements, expected timeline, and scope..."
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-[#111111] px-5 py-3 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all hover:bg-[#2B2B2B] rounded-none shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending inquiry...' : submitStatus === 'success' ? '✓ Inquiry Sent!' : 'Submit Inquiry'}
+                </button>
+
+                {submitStatus === 'success' && (
+                  <p className="text-center text-xs font-medium text-emerald-700 bg-emerald-50 py-2 border border-emerald-200">
+                    Thank you! Your message has been sent successfully. We will reply within 24 hours.
+                  </p>
                 )}
-              </button>
-              {submitStatus === 'success' && (
-                <p className="text-center text-xs font-medium text-emerald-600">
-                  Thank you! Your message has been sent successfully.
-                </p>
-              )}
-              {submitStatus === 'error' && (
-                <p className="text-center text-xs font-medium text-rose-600">
-                  Failed to send message. Please try again or email us at info@voltale.com.
-                </p>
-              )}
-            </form>
+                {submitStatus === 'error' && (
+                  <p className="text-center text-xs font-medium text-rose-700 bg-rose-50 py-2 border border-rose-200">
+                    Failed to send message. Please try again or email us directly at info@voltaleltd.com.
+                  </p>
+                )}
+              </form>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="border-t border-[#2B2B2B]/10 bg-white py-8 sm:py-12">
+        <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+          <Reveal>
+            <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-graphite/50 font-mono font-semibold mb-1.5">
+              Clarifications
+            </p>
+            <h2 className="font-display text-lg sm:text-xl font-bold tracking-[-0.02em] text-ink">
+              Frequently asked questions
+            </h2>
+          </Reveal>
+
+          <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
+            {faqs.map((faq, idx) => (
+              <Reveal key={faq.question} delay={idx * 60}>
+                <div className="border-t border-[#2B2B2B]/10 pt-3">
+                  <h3 className="font-display text-xs sm:text-sm font-bold text-ink">
+                    {faq.question}
+                  </h3>
+                  <p className="mt-1 text-xs sm:text-sm leading-5 text-graphite/75">
+                    {faq.answer}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-// Enhanced Footer
-function Footer() {
-  return (
-    <footer className="bg-[#0B0B0A] py-10 text-white/50 border-t border-white/5">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-5 text-[9px] uppercase tracking-[0.35em] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Voltale" className="h-6 w-auto invert opacity-80" />
-          <span className="font-semibold text-white/40">innovation driven</span>
         </div>
-        <div className="flex items-center gap-8 font-semibold">
-          <a href="mailto:info@voltale.com" className="hover:text-white/70 transition-colors">
-            info@voltale.com
-          </a>
-          <span className="text-white/20">© 2026</span>
-        </div>
-      </div>
-    </footer>
-  );
-}
+      </section>
 
-export default function ContactPage() {
-  return (
-    <div className="min-h-screen bg-ink text-white pt-20 flex flex-col justify-between">
-      <div className="flex-grow flex items-center">
-        <ContactSection />
-      </div>
       <Footer />
     </div>
   );

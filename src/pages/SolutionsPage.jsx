@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { solutions } from '../data/solutions';
 import Reveal from '../components/Reveal';
+import Footer from '../components/Footer';
 
 function SolutionModal({ solution, onClose }) {
   if (!solution) return null;
@@ -334,7 +335,7 @@ export default function SolutionsPage() {
             </Reveal>
             <Reveal delay={220}>
               <a
-                href="mailto:info@voltale.com"
+                href="mailto:info@voltaleltd.com"
                 className="mt-8 inline-block bg-[#111111] px-10 py-4 text-xs uppercase tracking-[0.3em] text-white transition-all hover:bg-[#2B2B2B]"
               >
                 Contact our team
@@ -344,18 +345,7 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      <footer className="border-t border-[#2B2B2B]/10 bg-[#F8F8F6] py-8">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-5 text-[10px] uppercase tracking-[0.42em] text-graphite/50 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
-          <div className="flex items-center gap-3">
-            <img src="/images/logo_black.png" alt="Voltale" className="h-6 w-auto" />
-            <span>innovation driven</span>
-          </div>
-          <div className="flex items-center gap-6">
-            <span>info@voltale.com</span>
-            <span>&copy; 2026</span>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
