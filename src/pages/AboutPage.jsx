@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import SectionHeading from '../components/SectionHeading';
 import Footer from '../components/Footer';
+import about1Img from '../assets/images/about1.png';
 
 // Data definitions needed for the sections
 const industries = [
@@ -71,13 +72,12 @@ function AboutSection() {
             description="From connected devices to enterprise software, from AI-driven insights to digital presence — Voltale delivers integrated solutions across five strategic domains. We combine deep technical expertise with a practical understanding of business operations."
           />
           
-          <div className="relative h-48 overflow-hidden border border-[#2B2B2B]/10 sm:h-60 rounded-none shadow-sm group">
+          <div className="relative h-48 overflow-hidden border border-[#2B2B2B]/10 sm:h-60 rounded-none shadow-sm group bg-white flex items-center justify-center p-3">
             <img
-              src="/images/about-circuit.jpg"
-              alt="Computer circuit board technology"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+              src={about1Img}
+              alt="Voltale Engineering and Innovation"
+              className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105 rounded-none"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
           </div>
         </div>
 
@@ -104,63 +104,241 @@ function AboutSection() {
   );
 }
 
-// ApproachSection Component
+const deliverySteps = [
+  {
+    step: '01',
+    title: 'Discover',
+    desc: 'Requirement mapping, system constraints, architectural audits, and scope alignment.',
+    startAngle: -34,
+    endAngle: 34,
+    numPos: { x: 180, y: 56 },
+    textPos: { x: 180, y: 72 }
+  },
+  {
+    step: '02',
+    title: 'Design',
+    desc: 'Architecture blueprints, hardware schematics, database models, and prototyping.',
+    startAngle: 56,
+    endAngle: 124,
+    numPos: { x: 298, y: 174 },
+    textPos: { x: 298, y: 190 }
+  },
+  {
+    step: '03',
+    title: 'Develop',
+    desc: 'Iterative engineering sprints, embedded firmware coding, and automated testing.',
+    startAngle: 146,
+    endAngle: 214,
+    numPos: { x: 180, y: 298 },
+    textPos: { x: 180, y: 314 }
+  },
+  {
+    step: '04',
+    title: 'Deploy',
+    desc: 'Production release, security hardening, live telemetry monitoring, and ongoing support.',
+    startAngle: 236,
+    endAngle: 304,
+    numPos: { x: 62, y: 174 },
+    textPos: { x: 62, y: 190 }
+  }
+];
+
+function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+  const angleInRadians = ((angleInDegrees - 90) * Math.PI) / 180.0;
+  return {
+    x: centerX + radius * Math.cos(angleInRadians),
+    y: centerY + radius * Math.sin(angleInRadians)
+  };
+}
+
+function describeArc(x, y, innerRadius, outerRadius, startAngle, endAngle) {
+  const startOuter = polarToCartesian(x, y, outerRadius, endAngle);
+  const endOuter = polarToCartesian(x, y, outerRadius, startAngle);
+  const startInner = polarToCartesian(x, y, innerRadius, endAngle);
+  const endInner = polarToCartesian(x, y, innerRadius, startAngle);
+
+  const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+
+  return [
+    'M', startOuter.x, startOuter.y,
+    'A', outerRadius, outerRadius, 0, largeArcFlag, 0, endOuter.x, endOuter.y,
+    'L', endInner.x, endInner.y,
+    'A', innerRadius, innerRadius, 0, largeArcFlag, 1, startInner.x, startInner.y,
+    'Z'
+  ].join(' ');
+}
+
+// Unified Approach Section (Left: Circular Lifecycle Wheel, Right: 3 Core Principles)
 function ApproachSection() {
+  const [activeStep, setActiveStep] = useState(0);
+  const currentStep = deliverySteps[activeStep];
+
   return (
     <section id="approach" className="bg-[#F8F8F6] text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
-      <div className="mx-auto grid w-full max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-        <SectionHeading
-          label="Our approach"
-          title="Three principles that guide every engagement."
-          description="Voltale is built on a foundation of precision, innovation, and genuine partnership. These values shape how we work and what we deliver."
-        />
-
-        <div className="grid gap-6">
-          <div className="relative h-48 overflow-hidden border border-[#2B2B2B]/10 sm:h-56 rounded-none shadow-sm group">
-            <img
-              src="/images/approach-glow.jpg"
-              alt="Technology innovation concept"
-              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent" />
-          </div>
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           
-          <div className="grid grid-cols-2 gap-2.5">
-            {['Discover', 'Design', 'Develop', 'Deploy'].map((step, index) => (
-              <Reveal key={step} delay={index * 50}>
-                <div className="group border border-[#2B2B2B]/10 bg-white/80 p-4 text-center rounded-none shadow-sm transition-all duration-300 hover:border-ink/20">
-                  <p className="text-[10px] uppercase tracking-widest text-graphite/45 font-mono group-hover:text-ink transition-colors">
-                    0{index + 1}
-                  </p>
-                  <p className="mt-1.5 font-display text-xs font-bold uppercase tracking-wider text-ink group-hover:scale-105 transition-transform">
-                    {step}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          {/* Left Column: Circular Wheel Lifecycle Diagram (1/2) */}
+          <div className="flex flex-col gap-5">
+            <div>
+              <div className="flex items-center gap-3 mb-1.5">
+                <span className="h-px w-8 bg-graphite/30" />
+                <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-mono font-semibold">
+                  Delivery Lifecycle
+                </p>
+              </div>
+              <h2 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.03em] text-ink mt-1.5">
+                How we engineer & deploy
+              </h2>
+            </div>
+
+            {/* Circular Radial Wheel Diagram */}
+            <div className="relative mx-auto w-full max-w-[340px] sm:max-w-[370px]">
+              <svg viewBox="0 0 360 360" className="w-full h-auto drop-shadow-sm select-none">
+                {/* Background Dark Connecting Donut Ring */}
+                <circle
+                  cx="180"
+                  cy="180"
+                  r="105"
+                  fill="none"
+                  stroke="#2B2B2B"
+                  strokeWidth="50"
+                  className="opacity-90"
+                />
+
+                {/* 4 Radial Wedge Tabs */}
+                {deliverySteps.map((item, idx) => {
+                  const isActive = activeStep === idx;
+                  const path = describeArc(180, 180, 54, 162, item.startAngle, item.endAngle);
+
+                  return (
+                    <g
+                      key={item.step}
+                      onClick={() => setActiveStep(idx)}
+                      className="cursor-pointer transition-all duration-300 group"
+                    >
+                      {/* Wedge Tab */}
+                      <path
+                        d={path}
+                        fill={isActive ? '#111111' : '#FFFFFF'}
+                        stroke="#2B2B2B"
+                        strokeWidth="1.5"
+                        strokeOpacity={isActive ? '0.4' : '0.15'}
+                        className="transition-colors duration-300 filter group-hover:brightness-95"
+                      />
+
+                      {/* Step Number */}
+                      <text
+                        x={item.numPos.x}
+                        y={item.numPos.y}
+                        textAnchor="middle"
+                        fill={isActive ? '#999999' : '#888888'}
+                        className="font-mono text-[11px] font-bold tracking-wider"
+                      >
+                        {item.step}
+                      </text>
+
+                      {/* Step Title */}
+                      <text
+                        x={item.textPos.x}
+                        y={item.textPos.y}
+                        textAnchor="middle"
+                        fill={isActive ? '#FFFFFF' : '#111111'}
+                        className="font-display text-[12px] font-bold uppercase tracking-[0.1em]"
+                      >
+                        {item.title}
+                      </text>
+                    </g>
+                  );
+                })}
+
+                {/* Center Hub Circle */}
+                <circle
+                  cx="180"
+                  cy="180"
+                  r="52"
+                  fill="#F8F8F6"
+                  stroke="#2B2B2B"
+                  strokeWidth="1.5"
+                  strokeOpacity="0.2"
+                />
+
+                {/* Center Text */}
+                <text
+                  x="180"
+                  y="174"
+                  textAnchor="middle"
+                  className="font-display text-[12px] font-extrabold fill-ink uppercase tracking-wider"
+                >
+                  Delivery
+                </text>
+                <text
+                  x="180"
+                  y="190"
+                  textAnchor="middle"
+                  className="font-display text-[10px] font-bold fill-graphite/70 uppercase tracking-[0.25em]"
+                >
+                  Lifecycle
+                </text>
+              </svg>
+            </div>
+
+            {/* Active Phase Description Card */}
+            <div className="bg-white p-4 border border-[#2B2B2B]/10 rounded-none shadow-sm transition-all duration-300">
+              <div className="flex items-center justify-between border-b border-[#2B2B2B]/10 pb-2 mb-2">
+                <span className="font-mono text-xs font-bold text-ink">
+                  Phase {currentStep.step} — {currentStep.title}
+                </span>
+                <span className="text-[10px] uppercase font-mono tracking-widest text-graphite/50">
+                  {activeStep + 1} of 4
+                </span>
+              </div>
+              <p className="text-xs text-graphite/75 leading-5">
+                {currentStep.desc}
+              </p>
+            </div>
           </div>
 
-          <div className="grid gap-0">
-            {values.map((value, index) => (
-              <Reveal key={value.title} delay={index * 80}>
-                <article className="grid gap-3 border-t border-[#2B2B2B]/10 py-5 sm:grid-cols-[auto_1fr] sm:gap-6 sm:py-6 group">
-                  <div className="flex items-center gap-3">
-                    <p className="text-[10px] uppercase tracking-widest text-graphite/45 font-mono group-hover:text-ink transition-colors">
-                      {value.index}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-base sm:text-lg font-bold tracking-[-0.02em] text-ink">
-                      {value.title}
-                    </h3>
-                    <p className="mt-1.5 max-w-2xl text-xs sm:text-sm leading-6 text-graphite/75 font-medium">
-                      {value.text}
-                    </p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
+          {/* Right Column: 3 Guiding Principles (1/2) */}
+          <div className="flex flex-col gap-6 border-t border-[#2B2B2B]/10 pt-8 lg:border-t-0 lg:border-l lg:border-[#2B2B2B]/10 lg:pt-0 lg:pl-12">
+            <div>
+              <div className="flex items-center gap-3 mb-1.5">
+                <span className="h-px w-8 bg-graphite/30" />
+                <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-mono font-semibold">
+                  Guiding Philosophy
+                </p>
+              </div>
+              <h2 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.03em] text-ink mt-1.5">
+                Three principles that guide us
+              </h2>
+              <p className="mt-1.5 text-xs sm:text-sm text-graphite/75 leading-6">
+                Built on precision, innovation, and genuine partnership in every collaboration.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-0">
+              {values.map((value, index) => (
+                <Reveal key={value.title} delay={index * 80}>
+                  <article className="grid gap-3 border-t border-[#2B2B2B]/10 py-4 sm:grid-cols-[auto_1fr] sm:gap-4 sm:py-4.5 first:border-t-0 group">
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-bold text-graphite/40 group-hover:text-ink transition-colors">
+                        {value.index}
+                      </span>
+                    </div>
+                    <div>
+                      <h3 className="font-display text-sm sm:text-base font-bold tracking-[-0.02em] text-ink">
+                        {value.title}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm leading-6 text-graphite/75 font-normal">
+                        {value.text}
+                      </p>
+                    </div>
+                  </article>
+                </Reveal>
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -170,7 +348,7 @@ function ApproachSection() {
 // IndustriesSection Component
 function IndustriesSection() {
   return (
-    <section className="bg-white text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
+    <section className="bg-[#F8F8F6] text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="max-w-2xl mb-8">
           <div className="flex items-center gap-3 mb-1.5">
@@ -184,7 +362,7 @@ function IndustriesSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {industries.map((industry, index) => (
             <Reveal key={industry.name} delay={index * 50}>
-              <div className="group border border-[#2B2B2B]/10 bg-[#F8F8F6] p-5 shadow-sm transition-all duration-300 hover:border-ink/20 rounded-none flex flex-col gap-2.5 h-full">
+              <div className="group border border-[#2B2B2B]/10 bg-white p-5 shadow-sm transition-all duration-300 hover:border-ink/20 rounded-none flex flex-col gap-2.5 h-full">
                 <div className="flex items-center gap-3">
                   <h3 className="font-display text-xs font-bold uppercase tracking-wider text-ink">
                     {industry.name}
@@ -205,7 +383,7 @@ function IndustriesSection() {
 // TestimonialsSection Component
 function TestimonialsSection() {
   return (
-    <section className="bg-[#F8F8F6] text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
+    <section className="bg-white text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <div className="max-w-2xl mb-8">
           <div className="flex items-center gap-3 mb-1.5">
@@ -219,7 +397,7 @@ function TestimonialsSection() {
         <div className="grid sm:grid-cols-3 gap-4">
           {testimonials.map((testimonial, index) => (
             <Reveal key={index} delay={index * 80}>
-              <div className="group border border-[#2B2B2B]/10 bg-white p-5 sm:p-6 rounded-none shadow-sm transition-all duration-300 hover:border-ink/20 flex flex-col justify-between h-full">
+              <div className="group border border-[#2B2B2B]/10 bg-[#F8F8F6] p-5 sm:p-6 rounded-none shadow-sm transition-all duration-300 hover:border-ink/20 flex flex-col justify-between h-full">
                 <div>
                   <p className="text-xs sm:text-sm italic leading-6 text-graphite/75 font-medium">
                     &ldquo;{testimonial.quote}&rdquo;
@@ -238,7 +416,6 @@ function TestimonialsSection() {
     </section>
   );
 }
-
 
 export default function AboutPage() {
   return (
