@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import Footer from '../components/Footer';
@@ -9,12 +9,16 @@ import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
 import iot1Img from '../assets/images/iot1.png';
 import iot2Img from '../assets/images/iot2.png';
 import iot3Img from '../assets/images/iot3.png';
+import iotIntern1Img from '../assets/images/iot_intern1.png';
+import iotIntern2Img from '../assets/images/iot_intern2.png';
+import raspberryImg from '../assets/images/raspberry.png';
 import software1Img from '../assets/images/software1.png';
 import software2Img from '../assets/images/software2.png';
 import ai1Img from '../assets/images/ai1.png';
 import ai2Img from '../assets/images/ai2.png';
 import it1Img from '../assets/images/it1.png';
 import it2Img from '../assets/images/it2.png';
+import healthtechImg from '../assets/images/healthtech.png';
 import business1Img from '../assets/images/business1.png';
 
 // 1. Hero Section
@@ -226,6 +230,107 @@ function ParadigmSection() {
   );
 }
 
+// Image Slider component with smooth auto-scroll & manual slide controls
+function DomainImageSlider({ images, alt, aspect = "aspect-[16/8]" }) {
+  const imageList = Array.isArray(images) && images.length > 0 ? images : [images].filter(Boolean);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (imageList.length <= 1 || isHovered) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % imageList.length);
+    }, 3800);
+    return () => clearInterval(timer);
+  }, [imageList.length, isHovered]);
+
+  if (imageList.length === 0) return null;
+
+  if (imageList.length === 1) {
+    return (
+      <div className={`rounded-none overflow-hidden ${aspect} shadow-sm bg-[#111111]/5`}>
+        <img
+          src={imageList[0]}
+          alt={alt}
+          className="w-full h-full object-cover transition-transform duration-700 hover:scale-102 rounded-none"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={`relative rounded-none overflow-hidden ${aspect} shadow-sm bg-[#111111]/5 group/slider select-none`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Sliding Images Container */}
+      <div
+        className="flex h-full w-full transition-transform duration-700 ease-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+      >
+        {imageList.map((img, idx) => (
+          <div key={idx} className="min-w-full h-full flex-shrink-0 relative">
+            <img
+              src={img}
+              alt={`${alt} ${idx + 1}`}
+              className="w-full h-full object-cover rounded-none"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Navigation Arrows */}
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentIndex((prev) => (prev - 1 + imageList.length) % imageList.length);
+        }}
+        className="absolute left-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-ink/75 hover:bg-ink text-white flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-opacity duration-200 z-10 text-xs shadow-sm"
+        aria-label="Previous slide"
+      >
+        ‹
+      </button>
+
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setCurrentIndex((prev) => (prev + 1) % imageList.length);
+        }}
+        className="absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-ink/75 hover:bg-ink text-white flex items-center justify-center opacity-0 group-hover/slider:opacity-100 transition-opacity duration-200 z-10 text-xs shadow-sm"
+        aria-label="Next slide"
+      >
+        ›
+      </button>
+
+      {/* Progress / Indicator Dots */}
+      <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 z-10 bg-black/40 backdrop-blur-xs px-2.5 py-1">
+        {imageList.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setCurrentIndex(idx);
+            }}
+            aria-label={`Go to image ${idx + 1}`}
+            className={`h-1.5 transition-all duration-300 ${
+              idx === currentIndex ? 'w-5 bg-white' : 'w-1.5 bg-white/40 hover:bg-white/70'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Slide Index Badge */}
+      <div className="absolute top-2.5 right-2.5 px-2 py-0.5 bg-black/60 backdrop-blur-xs text-[10px] font-mono text-white/90 uppercase tracking-widest pointer-events-none">
+        0{currentIndex + 1} / 0{imageList.length}
+      </div>
+    </div>
+  );
+}
+
 // 3. Interactive Strategic Domain Matrix with Rich Imagery & Specs
 function DomainMatrix() {
   const [activeDomain, setActiveDomain] = useState(0);
@@ -244,7 +349,7 @@ function DomainMatrix() {
       id: 'iot',
       name: 'IoT & Smart Hardware Automation',
       badge: 'Hardware & Edge Computing',
-      image: iot1Img,
+      images: [iot2Img, raspberryImg],
       summary: 'Designing integrated microcontroller systems, environmental sensor arrays, and remote telemetry nodes for real-time monitoring.',
       stack: ['ESP32 / STM32', 'MQTT / WebSockets', 'Embedded C/C++', 'LoRaWAN', 'Custom PCBs'],
       impact: 'Enabling real-time equipment tracking, automated triggers, and mission-critical telemetry.'
@@ -271,7 +376,7 @@ function DomainMatrix() {
       id: 'agritech',
       name: 'Agritech Innovation Systems',
       badge: 'Modern Agriculture',
-      image: iot2Img,
+      image: iot1Img,
       summary: 'Empowering commercial and smallholder agriculture through automated soil moisture sensing, climatic monitors, and data platforms.',
       stack: ['Soil Moisture Arrays', 'Solar Harvesting Nodes', 'SMS / Web Dashboard', 'Field Telemetry'],
       impact: 'Optimizing irrigation water usage and maximizing crop yields across diverse terrains.'
@@ -280,7 +385,7 @@ function DomainMatrix() {
       id: 'healthtech',
       name: 'Healthtech & Secure Registries',
       badge: 'Security & Compliance',
-      image: it2Img,
+      image: healthtechImg,
       summary: 'Developing compliant patient management systems, clinical databases, and national cryptographic device registries like E-Nyandiko.',
       stack: ['Encrypted Storage', 'Audit Trail Logging', 'Role-Based Authentication', 'REST Endpoints'],
       impact: 'Protecting sensitive health records and securing consumer electronics against theft.'
@@ -289,7 +394,7 @@ function DomainMatrix() {
       id: 'education',
       name: 'Talent Incubation & Internships',
       badge: 'Human Capital',
-      image: business1Img,
+      images: [iotIntern2Img, iotIntern1Img],
       summary: 'Mentoring and immersing university engineering students directly into live hardware and software deployments to build Africa’s next tech leaders.',
       stack: ['Live Code Reviews', 'Hardware Lab Sprints', 'Agile Scrum', 'Production Deployments'],
       impact: 'Developing high-caliber engineers equipped with both mechatronics and software rigor.'
@@ -359,13 +464,12 @@ function DomainMatrix() {
                         Domain 0{index + 1} of 0{domainList.length} — {domain.badge}
                       </p>
 
-                      <div className="rounded-none overflow-hidden aspect-[16/9] shadow-sm">
-                        <img
-                          src={domain.image}
-                          alt={domain.name}
-                          className="w-full h-full object-cover rounded-none"
-                        />
-                      </div>
+                      <DomainImageSlider
+                        key={domain.id}
+                        images={domain.images || [domain.image]}
+                        alt={domain.name}
+                        aspect="aspect-[16/9]"
+                      />
 
                       <h4 className="font-display text-lg font-bold tracking-[-0.02em] text-ink">
                         {domain.name}
@@ -415,14 +519,13 @@ function DomainMatrix() {
                   Domain 0{(activeDomain >= 0 ? activeDomain : 0) + 1} of 0{domainList.length} — {current.badge}
                 </p>
 
-                {/* Image */}
-                <div className="rounded-none overflow-hidden aspect-[16/8] shadow-sm">
-                  <img
-                    src={current.image}
-                    alt={current.name}
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-102 rounded-none"
-                  />
-                </div>
+                {/* Scrolling / Sliding Image Container */}
+                <DomainImageSlider
+                  key={current.id}
+                  images={current.images || [current.image]}
+                  alt={current.name}
+                  aspect="aspect-[16/8]"
+                />
 
                 <h3 className="mt-5 font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
                   {current.name}
