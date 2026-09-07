@@ -131,12 +131,21 @@ export default function ContactPage() {
                 <p className="mt-1 text-xs text-graphite/70 leading-5">
                   For new project scopes, system audits, and engineering partnerships.
                 </p>
-                <div className="mt-3 flex flex-col gap-0.5 text-xs font-semibold text-ink">
+                <div className="mt-3 flex flex-col gap-1 text-xs font-semibold text-ink">
                   <a href="mailto:info@voltaleltd.com" className="hover:underline">
                     info@voltaleltd.com
                   </a>
                   <a href="tel:+250796885690" className="text-graphite/70 hover:text-ink">
-                    +250 796 885 690
+                    +250 796 885 690 (Calls)
+                  </a>
+                  <a
+                    href="https://wa.me/250791689396"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-emerald-600 hover:underline flex items-center gap-1"
+                  >
+                    <span>+250 791 689 396 (WhatsApp)</span>
+                    <span className="text-[10px]">↗</span>
                   </a>
                 </div>
               </div>

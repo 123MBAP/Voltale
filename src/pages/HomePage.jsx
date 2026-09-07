@@ -644,6 +644,18 @@ function ContactSection() {
                 <span className="text-ink font-semibold">+250 796 885 690</span>
               </div>
               <div className="flex items-center gap-3">
+                <span className="text-graphite/40 uppercase tracking-widest text-[10px] w-20">WhatsApp</span>
+                <a
+                  href="https://wa.me/250791689396"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-emerald-600 hover:underline transition-all flex items-center gap-1.5"
+                >
+                  <span>+250 791 689 396</span>
+                  <span className="text-[10px]">↗</span>
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
                 <span className="text-graphite/40 uppercase tracking-widest text-[10px] w-20">Location</span>
                 <span className="text-ink font-semibold">Kigali, Rwanda</span>
               </div>

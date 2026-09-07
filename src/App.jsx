@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import FloatingNav from './components/FloatingNav';
 import ScrollToTop from './components/ScrollToTop';
+import WhatsAppButton from './components/WhatsAppButton';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
@@ -11,6 +12,7 @@ export default function App() {
     <div className="min-h-screen bg-white text-ink antialiased">
       <ScrollToTop />
       <FloatingNav />
+      <WhatsAppButton />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
