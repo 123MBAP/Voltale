@@ -720,7 +720,7 @@ function ContactSection() {
                 className="group relative overflow-hidden w-full bg-[#111111] hover:bg-[#2B2B2B] px-8 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all rounded-none shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="relative z-10">
-                  {isSubmitting ? 'Transmitting Request...' : submitStatus === 'success' ? '✓ Request Dispatched!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Transmit Consultation Request'}
+                  {isSubmitting ? 'Sending Request...' : submitStatus === 'success' ? '✓ Request Dispatched!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Send Request'}
                 </span>
                 {!isSubmitting && submitStatus !== 'success' && (
                   <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
