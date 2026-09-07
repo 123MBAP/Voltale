@@ -87,12 +87,6 @@ export default function AnimatedHeroBackground() {
 
     // ─── MAIN ANIMATION LOOP ───
     const render = () => {
-      // Pause drawing on mobile or hidden canvas to conserve CPU & avoid clutter
-      if (width === 0 || height === 0 || window.innerWidth < 768) {
-        animationFrameId = requestAnimationFrame(render);
-        return;
-      }
-
       time += 0.016;
 
       // Smooth mouse easing
@@ -542,7 +536,7 @@ export default function AnimatedHeroBackground() {
   }, []);
 
   return (
-    <div className="hidden md:block absolute inset-0 overflow-hidden bg-ink pointer-events-none select-none">
+    <div className="absolute inset-0 overflow-hidden bg-ink pointer-events-none select-none">
       {/* 3D Holographic Canvas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
