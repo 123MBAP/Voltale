@@ -4,6 +4,7 @@ import Reveal from '../components/Reveal';
 import Footer from '../components/Footer';
 import SocialLinks from '../components/SocialLinks';
 import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
+import FireworksCanvas from '../components/FireworksCanvas';
 
 // Asset Imports
 import iot1Img from '../assets/images/iot1.png';
@@ -20,6 +21,7 @@ import it1Img from '../assets/images/it1.png';
 import it2Img from '../assets/images/it2.png';
 import healthtechImg from '../assets/images/healthtech.png';
 import business1Img from '../assets/images/business1.png';
+import fintechAwardImg from '../assets/images/fintech_award.png';
 
 // 1. Hero Section
 function Hero() {
@@ -96,6 +98,111 @@ function Hero() {
     </section>
   );
 }
+
+// 1.5 Fintech Award Temporary Advert Section
+function FintechAwardAdvert() {
+  const tickerText = "★ NBR FINTECH HACKATHON 2026 WINNER • 1ST PLACE: INCLUSIVE MSME CREDIT CATEGORY • VOLTALE FINTECH ENGINEERING • OFFICIAL RECOGNITION ★ ";
+
+  return (
+    <section className="relative overflow-hidden bg-[#0a0d12] text-white border-y border-amber-400/40 py-6 sm:py-8 shadow-2xl">
+      {/* Top Animated Marquee Ribbon */}
+      <div className="absolute top-0 left-0 right-0 bg-amber-400/10 border-b border-amber-400/20 py-1 overflow-hidden z-20 pointer-events-none">
+        <div className="animate-advert-marquee whitespace-nowrap text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.28em] text-amber-300/90 font-semibold flex">
+          <span>{tickerText.repeat(4)}</span>
+          <span>{tickerText.repeat(4)}</span>
+        </div>
+      </div>
+
+      {/* Celebratory Ambient Glow Effects */}
+      <div className="absolute top-1/2 left-10 -translate-y-1/2 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none animate-gold-pulse" />
+      <div className="absolute top-1/2 right-10 -translate-y-1/2 w-96 h-96 bg-yellow-500/15 rounded-full blur-3xl pointer-events-none animate-gold-pulse" style={{ animationDelay: '2s' }} />
+
+      {/* Congratulatory Fireworks Canvas */}
+      <FireworksCanvas active={true} />
+
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10 pt-4">
+        <Reveal>
+          <div className="relative group bg-gradient-to-r from-white/[0.04] via-amber-500/[0.03] to-white/[0.04] border border-amber-400/30 p-6 sm:p-8 md:p-10 rounded-none backdrop-blur-md shadow-2xl overflow-hidden">
+            
+            {/* Corner Industrial Markers for authentic advert / bulletin style */}
+            <div className="absolute top-1.5 left-2 font-mono text-[10px] text-amber-400/50 select-none">+</div>
+            <div className="absolute top-1.5 right-2 font-mono text-[10px] text-amber-400/50 select-none">+</div>
+            <div className="absolute bottom-1.5 left-2 font-mono text-[10px] text-amber-400/50 select-none">+</div>
+            <div className="absolute bottom-1.5 right-2 font-mono text-[10px] text-amber-400/50 select-none">+</div>
+
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+              
+              {/* Award Information Content */}
+              <div className="flex-1 text-left">
+                <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-amber-400/15 border border-amber-400/40 text-amber-300 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-[0.25em] mb-4 shadow-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                  </span>
+                  <span>Special Bulletin • NBR Fintech Hackathon 2026</span>
+                </div>
+
+                <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                  1st Place Winner — <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-300">Inclusive MSME Credit</span>
+                </h2>
+
+                <p className="mt-3.5 text-xs sm:text-sm md:text-base text-white/80 leading-relaxed max-w-2xl font-normal">
+                  Voltale has achieved 1st Place at the National Bank of Rwanda (NBR) Fintech Hackathon 2026, engineered to advance inclusive credit scoring, telemetry-backed collateral, and next-gen MSME financial intelligence.
+                </p>
+
+                <div className="mt-5 flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] sm:text-xs font-mono text-white/70">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/[0.06] border border-white/10 text-amber-300 font-semibold">
+                    <span>🏆</span> 1st Place Distinction
+                  </span>
+                  <span className="text-white/30 hidden sm:inline">•</span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white/[0.04] border border-white/10">
+                    Fintech Engineering
+                  </span>
+                  <span className="text-white/30 hidden sm:inline">•</span>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-white/[0.04] border border-white/10">
+                    National Bank of Rwanda
+                  </span>
+                </div>
+              </div>
+
+              {/* Award Image Showcase with Floating & Sweep Animations */}
+              <div className="w-full lg:w-auto flex-shrink-0 flex justify-center">
+                <div className="relative group max-w-xs sm:max-w-sm lg:max-w-xs w-full animate-float-advert">
+                  
+                  {/* Animated Gold Glow Aura */}
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-500/50 via-yellow-400/40 to-amber-600/50 blur-md opacity-85 group-hover:opacity-100 transition duration-500 animate-pulse" />
+                  
+                  {/* Outer Framed Box */}
+                  <div className="relative bg-[#0d1117] p-2.5 border border-amber-400/50 shadow-2xl overflow-hidden">
+                    
+                    {/* Animated Light Sweep overlay */}
+                    <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+                      <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shine-sweep" />
+                    </div>
+
+                    <img
+                      src={fintechAwardImg}
+                      alt="Voltale 1st Place - NBR Fintech Hackathon 2026"
+                      className="w-full h-auto max-h-56 sm:max-h-64 object-contain mx-auto relative z-0 transition-transform duration-500 group-hover:scale-105"
+                    />
+
+                    <div className="mt-2 text-center border-t border-white/10 pt-1.5">
+                      <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-amber-300/90 font-bold">
+                        ★ Official Award Certification ★
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 
 // 2. Asymmetrical Bento Paradigm Section (Unpredictable, Rich Card Design)
 function ParadigmSection() {
@@ -751,6 +858,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white text-ink antialiased">
       <main>
         <Hero />
+        <FintechAwardAdvert />
         <ParadigmSection />
         <DomainMatrix />
         <ContactSection />

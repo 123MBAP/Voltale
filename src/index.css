@@ -71,3 +71,41 @@ body {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+@keyframes advertMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-advert-marquee {
+  display: flex;
+  width: 200%;
+  animation: advertMarquee 24s linear infinite;
+}
+
+@keyframes shineSweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  50%, 100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+.animate-shine-sweep {
+  animation: shineSweep 4.5s ease-in-out infinite;
+}
+
+@keyframes goldPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.15); }
+}
+
+.animate-gold-pulse {
+  animation: goldPulse 4s ease-in-out infinite;
+}
+
+@keyframes floatAdvert {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-float-advert {
+  animation: floatAdvert 3.5s ease-in-out infinite;
+}
