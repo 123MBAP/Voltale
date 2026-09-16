@@ -30,6 +30,8 @@ function ServiceModal({ service, onClose }) {
               <img
                 src={img}
                 alt={`${service.title} ${idx + 1}`}
+                loading="eager"
+                decoding="sync"
                 className="h-full w-full object-cover rounded-none"
               />
             </div>
@@ -152,6 +154,8 @@ export default function ServicesPage() {
                           <img
                             src={img}
                             alt={`${service.title} ${idx + 1}`}
+                            loading="eager"
+                            decoding="sync"
                             className="h-full w-full object-cover transition-transform duration-500 hover:scale-102 rounded-none"
                           />
                         </div>

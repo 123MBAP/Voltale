@@ -45,7 +45,7 @@ export default function FloatingNav() {
               to="/"
               className="group pointer-events-auto flex items-center gap-2.5 transition-opacity duration-500 hover:opacity-80"
             >
-              <img src={logo} alt="Voltale" className="h-6 w-auto sm:h-7" />
+              <img src={logo} alt="Voltale" loading="eager" decoding="sync" className="h-6 w-auto sm:h-7" />
               <div className="flex flex-col items-start justify-center leading-none">
                 <span className="font-display text-[13px] font-bold uppercase tracking-[0.15em] text-ink sm:text-[15px]">
                   Voltale

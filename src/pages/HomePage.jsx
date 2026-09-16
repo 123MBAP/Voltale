@@ -183,6 +183,8 @@ function FintechAwardAdvert() {
                     <img
                       src={fintechAwardImg}
                       alt="Voltale 1st Place - NBR Fintech Hackathon 2026"
+                      loading="eager"
+                      decoding="sync"
                       className="w-full h-auto max-h-56 sm:max-h-64 object-contain mx-auto relative z-0 transition-transform duration-500 group-hover:scale-105"
                     />
 
@@ -249,6 +251,8 @@ function ParadigmSection() {
                 <img
                   src={iot2Img}
                   alt="IoT Hardware Prototyping"
+                  loading="eager"
+                  decoding="sync"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
                 />
               </div>
@@ -256,6 +260,8 @@ function ParadigmSection() {
                 <img
                   src={iot3Img}
                   alt="Custom Circuit Design"
+                  loading="eager"
+                  decoding="sync"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
                 />
               </div>
@@ -287,6 +293,8 @@ function ParadigmSection() {
                 <img
                   src={ai1Img}
                   alt="Voltale Applied AI Architecture"
+                  loading="eager"
+                  decoding="sync"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
                 />
               </div>
@@ -324,6 +332,8 @@ function ParadigmSection() {
                   <img
                     src={software1Img}
                     alt="Voltale Enterprise Software Platform"
+                    loading="eager"
+                    decoding="sync"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
                   />
                 </div>
@@ -359,6 +369,8 @@ function DomainImageSlider({ images, alt, aspect = "aspect-[16/8]" }) {
         <img
           src={imageList[0]}
           alt={alt}
+          loading="eager"
+          decoding="sync"
           className="w-full h-full object-cover transition-transform duration-700 hover:scale-102 rounded-none"
         />
       </div>
@@ -381,6 +393,8 @@ function DomainImageSlider({ images, alt, aspect = "aspect-[16/8]" }) {
             <img
               src={img}
               alt={`${alt} ${idx + 1}`}
+              loading="eager"
+              decoding="sync"
               className="w-full h-full object-cover rounded-none"
             />
           </div>

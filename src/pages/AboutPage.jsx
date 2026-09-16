@@ -76,6 +76,8 @@ function AboutSection() {
             <img
               src={about1Img}
               alt="Voltale Engineering and Innovation"
+              loading="eager"
+              decoding="sync"
               className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105 rounded-none"
             />
           </div>
