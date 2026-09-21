@@ -382,6 +382,44 @@ function IndustriesSection() {
   );
 }
 
+function AchievedMilestonesSection() {
+  return (
+    <section className="bg-[#F8F8F6] text-ink py-10 sm:py-14 border-t border-[#2B2B2B]/10">
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+        <div className="max-w-2xl mb-8">
+          <div className="flex items-center gap-3 mb-1.5">
+            <span className="h-px w-8 bg-graphite/30" />
+            <p className="text-[10px] uppercase tracking-[0.46em] text-graphite/55 font-semibold">Achieved milestones</p>
+          </div>
+          <h2 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.03em] text-ink mt-1.5">
+            Recognition earned through practical engineering
+          </h2>
+        </div>
+
+        <article className="border border-[#2B2B2B]/15 bg-white p-5 sm:p-7 rounded-none shadow-sm">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-graphite/60 font-mono font-semibold">
+                2026 — NBR Fintech Hackathon
+              </p>
+              <h3 className="mt-2 font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
+                1st Place — Inclusive MSME Credit
+              </h3>
+              <p className="mt-3 text-xs sm:text-sm leading-6 text-graphite/75">
+                Voltale was recognized by the National Bank of Rwanda for engineering inclusive credit scoring, telemetry-backed collateral, and next-generation MSME financial intelligence.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2 border-l-2 border-graphite/30 pl-4 text-xs font-mono font-semibold uppercase tracking-[0.16em] text-graphite/70">
+              <span aria-hidden="true">★</span>
+              <span>Official distinction</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 // TestimonialsSection Component
 function TestimonialsSection() {
   return (
@@ -425,6 +463,7 @@ export default function AboutPage() {
       <AboutSection />
       <ApproachSection />
       <IndustriesSection />
+      <AchievedMilestonesSection />
       <TestimonialsSection />
       <Footer />
     </div>
