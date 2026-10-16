@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { services } from '../data/services';
 import Reveal from '../components/Reveal';
 import Footer from '../components/Footer';
+import MagneticButton from '../components/MagneticButton';
 
 function ServiceModal({ service, onClose }) {
   if (!service) return null;
@@ -190,12 +191,17 @@ export default function ServicesPage() {
               </p>
             </Reveal>
             <Reveal delay={220}>
-              <a
-                href="mailto:info@voltaleltd.com"
-                className="mt-5 inline-block bg-[#111111] px-7 py-3 text-xs uppercase tracking-[0.25em] font-bold text-white transition-all hover:bg-[#2B2B2B] rounded-none shadow-sm"
-              >
-                Contact our team
-              </a>
+              <div className="mt-6 flex justify-center">
+                <MagneticButton>
+                  <a
+                    href="mailto:info@voltaleltd.com"
+                    className="inline-flex items-center gap-3 bg-[#111111] px-8 py-4 text-xs uppercase tracking-[0.25em] font-bold text-white transition-all hover:bg-[#00D4FF] hover:text-[#0B0B0A] hover:shadow-[0_0_25px_rgba(0,212,255,0.4)] rounded-none shadow-sm"
+                  >
+                    <span>Contact our team</span>
+                    <span>→</span>
+                  </a>
+                </MagneticButton>
+              </div>
             </Reveal>
           </div>
         </div>

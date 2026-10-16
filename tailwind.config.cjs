@@ -9,6 +9,11 @@ module.exports = {
         stone: '#D9D4CC',
         graphite: '#2B2B2B',
         taupe: '#B6A89A',
+        volt: '#00D4FF',
+        voltDim: 'rgba(0, 212, 255, 0.15)',
+        voltGlow: 'rgba(0, 212, 255, 0.35)',
+        voltBright: '#4DE8FF',
+        signalWarm: '#FF6B2C',
       },
       fontFamily: {
         display: ['Inter', 'Avenir Next', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],

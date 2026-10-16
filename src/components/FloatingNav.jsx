@@ -45,7 +45,7 @@ export default function FloatingNav() {
               to="/"
               className="group pointer-events-auto flex items-center gap-2.5 transition-opacity duration-500 hover:opacity-80"
             >
-              <img src={logo} alt="Voltale" loading="eager" decoding="sync" className="h-6 w-auto sm:h-7" />
+              <img src={logo} alt="Voltale" loading="eager" decoding="sync" className="h-6 w-auto sm:h-7 bg-transparent" />
               <div className="flex flex-col items-start justify-center leading-none">
                 <span className="font-display text-[13px] font-bold uppercase tracking-[0.15em] text-ink sm:text-[15px]">
                   Voltale
@@ -61,25 +61,35 @@ export default function FloatingNav() {
             <Reveal delay={120}>
               <nav aria-label="Primary" className="pointer-events-auto hidden sm:block">
                 <ul className="flex items-center gap-5 text-[9px] font-semibold uppercase tracking-[0.3em] text-ink/65 sm:gap-7">
-                  {navItems.map((item) => (
-                    <li key={item.label}>
-                      {item.internal ? (
-                        <Link
-                          to={item.href}
-                          className="transition-all duration-500 hover:text-ink hover:tracking-[0.36em]"
-                        >
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <a
-                          href={item.href}
-                          className="transition-all duration-500 hover:text-ink hover:tracking-[0.36em]"
-                        >
-                          {item.label}
-                        </a>
-                      )}
-                    </li>
-                  ))}
+                  {navItems.map((item) => {
+                    const isActive = location.pathname === item.href;
+                    return (
+                      <li key={item.label} className="relative py-1">
+                        {item.internal ? (
+                          <Link
+                            to={item.href}
+                            className={`transition-all duration-300 flex items-center gap-1.5 ${
+                              isActive
+                                ? 'text-ink font-bold'
+                                : 'hover:text-ink hover:tracking-[0.34em]'
+                            }`}
+                          >
+                            {isActive && (
+                              <span className="h-1 w-1 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF]" />
+                            )}
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <a
+                            href={item.href}
+                            className="transition-all duration-300 hover:text-ink hover:tracking-[0.34em]"
+                          >
+                            {item.label}
+                          </a>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </Reveal>

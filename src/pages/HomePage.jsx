@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Reveal from '../components/Reveal';
 import Footer from '../components/Footer';
 import SocialLinks from '../components/SocialLinks';
 import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
+import TiltCard from '../components/TiltCard';
+import AnimatedCounter from '../components/AnimatedCounter';
+import MagneticButton from '../components/MagneticButton';
 
 // Asset Imports
 import iot1Img from '../assets/images/iot1.png';
@@ -21,8 +25,45 @@ import it2Img from '../assets/images/it2.png';
 import healthtechImg from '../assets/images/healthtech.png';
 import business1Img from '../assets/images/business1.png';
 
+const sectionReveal = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 // 1. Hero Section
 function Hero() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.07, delayChildren: 0.1 },
+    },
+  };
+
+  const wordVariants = {
+    hidden: { opacity: 0, y: 14 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const heroWords = ['Where', 'Physical', 'Computing', 'Meets', 'Scalable', 'Cloud', 'Intelligence.'];
+
   return (
     <section id="top" className="relative overflow-hidden bg-ink text-mist pt-28 pb-14 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-20 min-h-[85vh] flex items-center">
       <AnimatedHeroBackground />
@@ -30,8 +71,9 @@ function Hero() {
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10 text-left">
         <div className="flex flex-col items-start justify-start max-w-3xl">
           <Reveal delay={60}>
-            <div className="inline-flex items-center gap-3 px-3.5 py-1.5">
-              <p className="text-[9px] uppercase tracking-[0.35em] text-white/90 font-mono font-semibold">
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#00D4FF] shadow-[0_0_8px_#00D4FF] animate-pulse" />
+              <p className="text-[9px] uppercase tracking-[0.32em] text-white/90 font-mono font-semibold">
                 Cross-Domain Engineering • Kigali, Rwanda
               </p>
             </div>
@@ -41,9 +83,26 @@ function Hero() {
             <h1 className="mt-5 sm:mt-6 font-display text-[clamp(2.75rem,7vw,5.5rem)] font-extrabold leading-[0.92] tracking-[-0.07em] text-white text-left">
               Voltale
             </h1>
-            <p className="mt-2.5 font-display text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.03em] text-white/90">
-              Where Physical Computing Meets Scalable Cloud Intelligence.
-            </p>
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="mt-3 font-display text-lg sm:text-xl lg:text-2xl font-bold tracking-[-0.03em] flex flex-wrap gap-x-2"
+            >
+              {heroWords.map((word, i) => (
+                <motion.span
+                  key={i}
+                  variants={wordVariants}
+                  className={
+                    word.includes('Cloud') || word.includes('Intelligence') || word.includes('Scalable')
+                      ? 'text-[#00D4FF]'
+                      : 'text-white/95'
+                  }
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </motion.div>
           </Reveal>
 
           <Reveal delay={220}>
@@ -55,19 +114,16 @@ function Hero() {
 
           <Reveal delay={300}>
             <div className="mt-7 flex flex-wrap justify-start gap-3 sm:gap-4">
-              <a
-                href="#contact"
-                className="group relative overflow-hidden bg-white px-7 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-[#111111] transition-all hover:bg-white/90 hover:shadow-2xl hover:scale-[1.02] active:scale-95 rounded-none shadow-md"
-              >
-                <span className="relative z-10">Start Project Discovery</span>
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-              </a>
-              <Link
-                to="/solutions"
-                className="border border-white/20 bg-white/[0.04] backdrop-blur-sm px-7 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all hover:border-white/50 hover:bg-white/10 hover:scale-[1.02] active:scale-95 rounded-none"
-              >
-                Explore Solutions
-              </Link>
+              <MagneticButton>
+                <a
+                  href="#contact"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.25em] text-[#0B0B0A] transition-all hover:bg-[#00D4FF] hover:shadow-[0_0_30px_rgba(0,212,255,0.4)] active:scale-95 shadow-md"
+                >
+                  <span className="relative z-10">Start Project Discovery</span>
+                  <span className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-black/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                </a>
+              </MagneticButton>
             </div>
           </Reveal>
 
@@ -75,19 +131,28 @@ function Hero() {
             <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-white/10 pt-6 w-full">
               <div className="flex flex-col gap-1 items-start">
                 <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Domains</span>
-                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">7 Strategic</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white flex items-center gap-1.5">
+                  <span className="text-[#00D4FF] font-mono">0</span><AnimatedCounter end={7} />
+                  <span className="text-xs font-normal text-white/70">Strategic</span>
+                </span>
               </div>
               <div className="flex flex-col gap-1 items-start">
                 <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Discipline</span>
-                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">100% Unified</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white flex items-center gap-1">
+                  <AnimatedCounter end={100} suffix="%" />
+                  <span className="text-xs font-normal text-white/70">Unified</span>
+                </span>
               </div>
               <div className="flex flex-col gap-1 items-start">
                 <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Engineering Hub</span>
                 <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">Kigali, RW</span>
               </div>
               <div className="flex flex-col gap-1 items-start">
-                <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Execution</span>
-                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white">Precise & Enduring</span>
+                <span className="text-[9px] uppercase tracking-[0.3em] text-white/45 font-mono">Telemetry</span>
+                <span className="text-lg sm:text-xl font-bold font-display tracking-tight text-white flex items-center gap-1">
+                  <span className="text-[#00D4FF]">&lt;</span><AnimatedCounter end={12} suffix="ms" />
+                  <span className="text-xs font-normal text-white/70">Latency</span>
+                </span>
               </div>
             </div>
           </Reveal>
@@ -104,7 +169,13 @@ function ParadigmSection() {
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-10">
+        <motion.div
+          variants={sectionReveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="max-w-3xl mb-10"
+        >
           <p className="text-xs uppercase tracking-[0.3em] text-graphite/50 font-semibold font-mono mb-2">
             The Voltale Advantage
           </p>
@@ -115,17 +186,29 @@ function ParadigmSection() {
             Traditional agencies separate hardware physics from software development. Voltale converges embedded sensors, 
             microcontroller telemetry, distributed cloud microservices, and applied AI into a singular, synchronized ecosystem.
           </p>
-        </div>
+        </motion.div>
 
         {/* Dynamic Bento Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
           
           {/* Card 1: Large Bento Card (Hardware & Edge - Span 7) */}
-          <div className="md:col-span-7 group bg-[#F8F8F6] p-6 sm:p-8 rounded-none shadow-sm transition-all duration-300 hover:shadow-md flex flex-col justify-between overflow-hidden">
+          <motion.div
+            variants={cardReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="md:col-span-7"
+          >
+          <TiltCard className="h-full bg-[#F8F8F6] p-6 sm:p-8 rounded-none border border-black/5 hover:border-[#00D4FF]/30 transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col justify-between overflow-hidden">
             <div>
-              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-2">
-                01 — Hardware & Mechatronics
-              </p>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50">
+                  01 — Hardware & Mechatronics
+                </p>
+                <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-black/5 text-graphite/70">
+                  Physical Node
+                </span>
+              </div>
 
               <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
                 Physical Computing & Custom Sensor Nodes
@@ -144,7 +227,7 @@ function ParadigmSection() {
                   alt="IoT Hardware Prototyping"
                   loading="eager"
                   decoding="sync"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 rounded-none"
                 />
               </div>
               <div className="aspect-[4/3] rounded-none overflow-hidden bg-white shadow-sm">
@@ -153,7 +236,7 @@ function ParadigmSection() {
                   alt="Custom Circuit Design"
                   loading="eager"
                   decoding="sync"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 rounded-none"
                 />
               </div>
             </div>
@@ -161,16 +244,30 @@ function ParadigmSection() {
             <p className="mt-5 text-xs font-mono text-graphite/60">
               ESP32 / STM32 · LoRaWAN & Cellular · Custom PCBs · Real-Time Telemetry
             </p>
-          </div>
+          </TiltCard>
+          </motion.div>
 
           {/* Card 2: Tall Bento Card (Applied AI & Intelligence - Span 5) */}
-          <div className="md:col-span-5 group bg-ink text-white p-6 sm:p-8 rounded-none shadow-md transition-all duration-300 hover:shadow-xl flex flex-col justify-between overflow-hidden relative">
-            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-blue-500/10 blur-3xl" />
+          <motion.div
+            variants={cardReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: 0.12 }}
+            className="md:col-span-5"
+          >
+          <TiltCard className="h-full bg-[#0B0B0A] text-white p-6 sm:p-8 rounded-none border border-white/10 hover:border-[#00D4FF]/40 shadow-md hover:shadow-2xl flex flex-col justify-between overflow-hidden relative">
+            <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[#00D4FF]/10 blur-3xl pointer-events-none" />
             
             <div className="relative z-10">
-              <p className="text-xs font-mono font-semibold uppercase tracking-wider text-white/50 mb-2">
-                02 — Data & AI
-              </p>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-xs font-mono font-semibold uppercase tracking-wider text-white/50">
+                  02 — Data & AI
+                </p>
+                <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#00D4FF]/15 text-[#00D4FF]">
+                  Adaptive ML
+                </span>
+              </div>
 
               <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-white">
                 Applied AI & Decision Analytics
@@ -180,13 +277,13 @@ function ParadigmSection() {
               </p>
 
               {/* Visual Showcase Card */}
-              <div className="mt-6 rounded-none overflow-hidden aspect-[16/10] bg-black/20 shadow-sm">
+              <div className="mt-6 rounded-none overflow-hidden aspect-[16/10] bg-black/40 shadow-sm border border-white/5">
                 <img
                   src={ai1Img}
                   alt="Voltale Applied AI Architecture"
                   loading="eager"
                   decoding="sync"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 rounded-none"
                 />
               </div>
             </div>
@@ -194,15 +291,29 @@ function ParadigmSection() {
             <p className="relative z-10 mt-5 text-xs font-mono text-white/50">
               PyTorch & Python · Anomaly Detection · Continuous Streams · Edge AI
             </p>
-          </div>
+          </TiltCard>
+          </motion.div>
 
           {/* Card 3: Wide Full-Width Bento Card (Cloud Architecture & Web Software - Span 12) */}
-          <div className="md:col-span-12 group bg-[#F8F8F6] p-6 sm:p-8 rounded-none shadow-sm transition-all duration-300 hover:shadow-md">
+          <motion.div
+            variants={cardReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ delay: 0.2 }}
+            className="md:col-span-12"
+          >
+          <TiltCard className="h-full bg-[#F8F8F6] p-6 sm:p-8 rounded-none border border-black/5 hover:border-[#00D4FF]/30 transition-all duration-300 shadow-sm hover:shadow-xl">
             <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
               <div>
-                <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-2">
-                  03 — Scalable Enterprise Software
-                </p>
+                <div className="flex items-center gap-3 mb-2">
+                  <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50">
+                    03 — Scalable Enterprise Software
+                  </p>
+                  <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-black/5 text-graphite/70">
+                    Zero-Downtime
+                  </span>
+                </div>
 
                 <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
                   Mission-Critical Cloud Architectures & Reactive Platforms
@@ -218,19 +329,20 @@ function ParadigmSection() {
               </div>
 
               {/* Visual Showcase Screen */}
-              <div className="rounded-none overflow-hidden bg-white shadow-sm group-hover:shadow-md transition-all">
+              <div className="rounded-none overflow-hidden bg-white shadow-sm border border-black/5">
                 <div className="aspect-[16/10] overflow-hidden rounded-none">
                   <img
                     src={software1Img}
                     alt="Voltale Enterprise Software Platform"
                     loading="eager"
                     decoding="sync"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 rounded-none"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 rounded-none"
                   />
                 </div>
               </div>
             </div>
-          </div>
+          </TiltCard>
+          </motion.div>
 
         </div>
       </div>
@@ -420,21 +532,15 @@ function DomainMatrix() {
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-0 gap-4">
           <div className="max-w-2xl">
             <p className="text-xs uppercase tracking-[0.3em] text-graphite/50 font-semibold font-mono mb-2">
               Our Scope
             </p>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-[-0.03em] text-ink">
-              Five strategic domains. One cohesive standard.
+            <h2 className="font-display text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.03em] text-ink">
+              Seven strategic domains. One cohesive standard.
             </h2>
           </div>
-          <Link
-            to="/solutions"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-bold text-ink hover:gap-3 transition-all"
-          >
-            Explore Flagship Solutions <span className="text-sm">→</span>
-          </Link>
         </div>
 
         {/* Interactive Matrix Display */}
@@ -450,28 +556,37 @@ function DomainMatrix() {
                     onClick={() => setActiveDomain(index)}
                     className={`group flex items-center justify-between p-4 rounded-none text-left transition-all duration-300 ${
                       isActive
-                        ? 'bg-white shadow-sm lg:translate-x-1.5'
-                        : 'bg-white/50 hover:bg-white lg:hover:translate-x-1'
+                        ? 'bg-white shadow-md border-l-2 border-[#00D4FF] lg:translate-x-2'
+                        : 'bg-white/60 hover:bg-white border-l-2 border-transparent lg:hover:translate-x-1'
                     }`}
                   >
                     <div className="flex items-center gap-3.5">
-                      <span className={`font-mono text-xs font-semibold ${isActive ? 'text-ink' : 'text-graphite/40'}`}>
+                      <span className={`font-mono text-xs font-semibold ${isActive ? 'text-[#00D4FF]' : 'text-graphite/40'}`}>
                         0{index + 1}
                       </span>
                       <div>
-                        <h3 className={`font-display text-sm font-semibold tracking-tight ${isActive ? 'text-ink' : 'text-graphite/70'}`}>
+                        <h3 className={`font-display text-sm font-semibold tracking-tight ${isActive ? 'text-ink font-bold' : 'text-graphite/70'}`}>
                           {domain.name}
                         </h3>
                       </div>
                     </div>
-                    <span className={`text-sm transition-transform duration-300 ${isActive ? 'rotate-90 lg:rotate-0 lg:translate-x-1 font-bold text-ink' : 'opacity-20'}`}>
+                    <span className={`text-sm transition-transform duration-300 ${isActive ? 'rotate-90 lg:rotate-0 lg:translate-x-1 font-bold text-[#00D4FF]' : 'opacity-20'}`}>
                       →
                     </span>
                   </button>
 
                   {/* Mobile inline detail panel (opens directly under selected domain) */}
+                  <AnimatePresence initial={false}>
                   {isActive && (
-                    <div className="lg:hidden bg-white p-5 border-t border-[#2B2B2B]/10 rounded-none shadow-sm flex flex-col gap-3.5 mb-2 animate-fadeIn">
+                    <motion.div
+                      key={`${domain.id}-mobile-detail`}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeOut' }}
+                      className="lg:hidden overflow-hidden"
+                    >
+                    <div className="bg-white p-5 border-t border-[#2B2B2B]/10 rounded-none shadow-sm flex flex-col gap-3.5 mb-2">
                       <p className="text-[10px] font-mono font-semibold uppercase tracking-wider text-graphite/50">
                         Domain 0{index + 1} of 0{domainList.length} — {domain.badge}
                       </p>
@@ -503,13 +618,6 @@ function DomainMatrix() {
 
                       <div className="pt-3 border-t border-[#2B2B2B]/10 flex flex-wrap items-center justify-between gap-3">
                         <Link
-                          to="/solutions"
-                          className="group inline-flex items-center gap-2 bg-ink text-white px-4 py-2 text-xs uppercase tracking-[0.2em] font-bold rounded-none hover:bg-graphite transition-all shadow-sm"
-                        >
-                          <span>Explore Solutions</span>
-                          <span className="transition-transform group-hover:translate-x-1">→</span>
-                        </Link>
-                        <Link
                           to="/about"
                           className="text-xs font-bold uppercase tracking-[0.2em] text-graphite/60 hover:text-ink transition-colors"
                         >
@@ -517,7 +625,9 @@ function DomainMatrix() {
                         </Link>
                       </div>
                     </div>
+                    </motion.div>
                   )}
+                  </AnimatePresence>
                 </div>
               );
             })}
@@ -525,7 +635,16 @@ function DomainMatrix() {
 
           {/* Desktop right domain preview card */}
           {current && (
-            <div className="hidden lg:flex bg-white p-6 sm:p-8 rounded-none shadow-sm flex-col justify-between overflow-hidden sticky top-24">
+            <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, x: 18 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -18 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden lg:block sticky top-24"
+            >
+            <TiltCard className="h-full bg-white p-6 sm:p-8 rounded-none border border-black/5 hover:border-[#00D4FF]/30 shadow-md flex flex-col justify-between overflow-hidden">
               <div>
                 <p className="text-xs font-mono font-semibold uppercase tracking-wider text-graphite/50 mb-3">
                   Domain 0{(activeDomain >= 0 ? activeDomain : 0) + 1} of 0{domainList.length} — {current.badge}
@@ -560,20 +679,15 @@ function DomainMatrix() {
 
               <div className="mt-6 pt-4 border-t border-[#2B2B2B]/10 flex flex-wrap items-center justify-between gap-3">
                 <Link
-                  to="/solutions"
-                  className="group inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-xs uppercase tracking-[0.2em] font-bold rounded-none hover:bg-graphite transition-all shadow-sm"
-                >
-                  <span>Explore Solutions</span>
-                  <span className="transition-transform group-hover:translate-x-1">→</span>
-                </Link>
-                <Link
                   to="/about"
-                  className="text-xs font-bold uppercase tracking-[0.2em] text-graphite/60 hover:text-ink transition-colors"
+                  className="text-xs font-bold uppercase tracking-[0.2em] text-graphite/60 hover:text-[#00D4FF] transition-colors"
                 >
-                  Learn How We Deliver
+                  Learn How We Deliver →
                 </Link>
               </div>
-            </div>
+            </TiltCard>
+            </motion.div>
+            </AnimatePresence>
           )}
 
         </div>
@@ -706,7 +820,7 @@ function ContactSection() {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-ink placeholder:text-graphite/30"
+                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#00D4FF] placeholder:text-graphite/30"
                   placeholder="jean@company.com"
                   required
                 />
@@ -720,7 +834,7 @@ function ContactSection() {
                   rows="3"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-ink placeholder:text-graphite/30 resize-none"
+                  className="w-full border-b border-[#2B2B2B]/20 bg-transparent py-2 text-sm font-semibold text-ink outline-none transition-colors focus:border-[#00D4FF] placeholder:text-graphite/30 resize-none"
                   placeholder="Describe your technical objectives or requirements..."
                   required
                 />
@@ -729,13 +843,13 @@ function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative overflow-hidden w-full bg-[#111111] hover:bg-[#2B2B2B] px-8 py-3.5 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all rounded-none shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group relative overflow-hidden w-full bg-[#111111] hover:bg-[#00D4FF] hover:text-[#0B0B0A] hover:shadow-[0_0_25px_rgba(0,212,255,0.4)] px-8 py-4 text-xs font-bold uppercase tracking-[0.25em] text-white transition-all rounded-none shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="relative z-10">
-                  {isSubmitting ? 'Sending Request...' : submitStatus === 'success' ? '✓ Request Dispatched!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Send Request'}
+                  {isSubmitting ? 'Sending Request...' : submitStatus === 'success' ? '✓ Request Dispatched!' : submitStatus === 'error' ? 'Failed to send — Retry' : 'Send Request →'}
                 </span>
                 {!isSubmitting && submitStatus !== 'success' && (
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                 )}
               </button>
 
@@ -771,4 +885,3 @@ export default function HomePage() {
     </div>
   );
 }
-

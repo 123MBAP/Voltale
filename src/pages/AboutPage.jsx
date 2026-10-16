@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import SectionHeading from '../components/SectionHeading';
 import Footer from '../components/Footer';
+import TiltCard from '../components/TiltCard';
 import about1Img from '../assets/images/about1.png';
 
 // Data definitions needed for the sections
@@ -223,9 +224,9 @@ function ApproachSection() {
                       <path
                         d={path}
                         fill={isActive ? '#111111' : '#FFFFFF'}
-                        stroke="#2B2B2B"
-                        strokeWidth="1.5"
-                        strokeOpacity={isActive ? '0.4' : '0.15'}
+                        stroke={isActive ? '#00D4FF' : '#2B2B2B'}
+                        strokeWidth={isActive ? '2.5' : '1.5'}
+                        strokeOpacity={isActive ? '0.9' : '0.15'}
                         className="transition-colors duration-300 filter group-hover:brightness-95"
                       />
 
@@ -234,7 +235,7 @@ function ApproachSection() {
                         x={item.numPos.x}
                         y={item.numPos.y}
                         textAnchor="middle"
-                        fill={isActive ? '#999999' : '#888888'}
+                        fill={isActive ? '#00D4FF' : '#888888'}
                         className="font-mono text-[11px] font-bold tracking-wider"
                       >
                         {item.step}
@@ -364,7 +365,7 @@ function IndustriesSection() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {industries.map((industry, index) => (
             <Reveal key={industry.name} delay={index * 50}>
-              <div className="group border border-[#2B2B2B]/10 bg-white p-5 shadow-sm transition-all duration-300 hover:border-ink/20 rounded-none flex flex-col gap-2.5 h-full">
+              <TiltCard className="border border-[#2B2B2B]/10 hover:border-[#00D4FF]/40 bg-white p-5 shadow-sm transition-all duration-300 rounded-none flex flex-col gap-2.5 h-full">
                 <div className="flex items-center gap-3">
                   <h3 className="font-display text-xs font-bold uppercase tracking-wider text-ink">
                     {industry.name}
@@ -373,7 +374,7 @@ function IndustriesSection() {
                 <p className="text-[11px] leading-5 text-graphite/70 font-medium">
                   {industry.description}
                 </p>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -396,25 +397,28 @@ function AchievedMilestonesSection() {
           </h2>
         </div>
 
-        <article className="border border-[#2B2B2B]/15 bg-white p-5 sm:p-7 rounded-none shadow-sm">
+        <TiltCard className="border border-[#2B2B2B]/15 hover:border-[#00D4FF]/40 bg-white p-5 sm:p-7 rounded-none shadow-sm relative overflow-hidden">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-3xl">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-graphite/60 font-mono font-semibold">
-                2026 — NBR Fintech Hackathon
-              </p>
-              <h3 className="mt-2 font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
-                1st Place — Inclusive MSME Credit
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B2C]" />
+                <p className="text-[10px] uppercase tracking-[0.3em] text-graphite/60 font-mono font-semibold">
+                  2026 — NBR Fintech Hackathon
+                </p>
+              </div>
+              <h3 className="font-display text-xl sm:text-2xl font-bold tracking-[-0.02em] text-ink">
+                1st Place Winner — Inclusive MSME Credit Architecture
               </h3>
               <p className="mt-3 text-xs sm:text-sm leading-6 text-graphite/75">
                 Voltale was recognized by the National Bank of Rwanda for engineering inclusive credit scoring, telemetry-backed collateral, and next-generation MSME financial intelligence.
               </p>
             </div>
-            <div className="flex shrink-0 items-center gap-2 border-l-2 border-graphite/30 pl-4 text-xs font-mono font-semibold uppercase tracking-[0.16em] text-graphite/70">
-              <span aria-hidden="true">★</span>
-              <span>Official distinction</span>
+            <div className="flex shrink-0 items-center gap-2 border-l-2 border-[#00D4FF] pl-4 text-xs font-mono font-semibold uppercase tracking-[0.16em] text-graphite/70">
+              <span className="text-[#FF6B2C]" aria-hidden="true">★</span>
+              <span className="text-ink">1st Place Winner</span>
             </div>
           </div>
-        </article>
+        </TiltCard>
       </div>
     </section>
   );

@@ -38,6 +38,166 @@
     <meta name="twitter:image" content="https://voltaleltd.com/images/favicon.png" />
 
     <title>Voltale | Where Physical Computing Meets Scalable Cloud Intelligence</title>
+
+    <!-- Schema.org Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://voltaleltd.com/#organization",
+          "name": "Voltale Ltd",
+          "alternateName": "Voltale",
+          "url": "https://voltaleltd.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://voltaleltd.com/images/favicon.png",
+            "width": 512,
+            "height": 512
+          },
+          "description": "Where Physical Computing Meets Scalable Cloud Intelligence. Elite technology partner delivering integrated solutions across mechatronics, cloud engineering, and IoT architecture.",
+          "foundingDate": "2024",
+          "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "minValue": 2,
+            "maxValue": 10
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Kigali",
+            "addressCountry": "RW"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -1.9403,
+            "longitude": 29.8739
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "+250-796-885-690",
+              "contactType": "sales",
+              "email": "info@voltaleltd.com",
+              "availableLanguage": ["en", "fr"]
+            },
+            {
+              "@type": "ContactPoint",
+              "telephone": "+250-791-689-396",
+              "contactType": "customer support",
+              "email": "voltale360@gmail.com",
+              "availableLanguage": ["en", "fr"]
+            }
+          ],
+          "founder": [
+            { "@id": "https://voltaleltd.com/#founder-patrick" },
+            { "@id": "https://voltaleltd.com/#founder-fred" }
+          ],
+          "award": "1st Place Winner — NBR Fintech Hackathon",
+          "knowsAbout": [
+            "IoT Architecture",
+            "Mechatronics",
+            "Enterprise Software",
+            "Cloud Infrastructure",
+            "Embedded Systems",
+            "Edge Computing",
+            "Digital Transformation"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Voltale Core Services",
+            "itemListElement": [
+              { "@id": "https://voltaleltd.com/#service-iot" },
+              { "@id": "https://voltaleltd.com/#service-mechatronics" },
+              { "@id": "https://voltaleltd.com/#service-software" },
+              { "@id": "https://voltaleltd.com/#service-cloud" }
+            ]
+          },
+          "sameAs": [
+            "https://wa.me/250791689396"
+          ]
+        },
+
+        {
+          "@type": "WebSite",
+          "@id": "https://voltaleltd.com/#website",
+          "url": "https://voltaleltd.com/",
+          "name": "Voltale",
+          "description": "Where Physical Computing Meets Scalable Cloud Intelligence",
+          "publisher": { "@id": "https://voltaleltd.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://voltaleltd.com/?s={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          },
+          "inLanguage": "en"
+        },
+
+        {
+          "@type": "Person",
+          "@id": "https://voltaleltd.com/#founder-patrick",
+          "name": "Patrick MBABAZI",
+          "jobTitle": "Co-Founder & Mechatronics / Software Lead",
+          "description": "Specialist in mechatronics and software engineering.",
+          "worksFor": { "@id": "https://voltaleltd.com/#organization" },
+          "knowsAbout": ["Mechatronics", "Software Engineering", "Embedded Systems", "IoT"]
+        },
+
+        {
+          "@type": "Person",
+          "@id": "https://voltaleltd.com/#founder-fred",
+          "name": "Fred TUYISHIME",
+          "jobTitle": "Co-Founder & Database Systems / Cloud Lead",
+          "description": "Specialist in database systems and cloud infrastructure.",
+          "worksFor": { "@id": "https://voltaleltd.com/#organization" },
+          "knowsAbout": ["Database Systems", "Cloud Infrastructure", "DevOps", "Backend Engineering"]
+        },
+
+        {
+          "@type": "Service",
+          "@id": "https://voltaleltd.com/#service-iot",
+          "name": "IoT Architecture",
+          "description": "End-to-end Internet of Things solutions — sensor networks, edge gateways, MQTT pipelines, and real-time dashboards.",
+          "provider": { "@id": "https://voltaleltd.com/#organization" },
+          "serviceType": "IoT Architecture & Hardware",
+          "areaServed": {
+            "@type": "Place",
+            "name": "East Africa & Global"
+          }
+        },
+
+        {
+          "@type": "Service",
+          "@id": "https://voltaleltd.com/#service-mechatronics",
+          "name": "Mechatronics & Automation",
+          "description": "Custom embedded controllers, actuator systems, robotics prototyping, and industrial automation integration.",
+          "provider": { "@id": "https://voltaleltd.com/#organization" },
+          "serviceType": "Mechatronics & Automation"
+        },
+
+        {
+          "@type": "Service",
+          "@id": "https://voltaleltd.com/#service-software",
+          "name": "Enterprise Software Development",
+          "description": "Full-stack web and mobile platforms, ERP integrations, API ecosystems, and data-driven applications.",
+          "provider": { "@id": "https://voltaleltd.com/#organization" },
+          "serviceType": "Enterprise Software Development"
+        },
+
+        {
+          "@type": "Service",
+          "@id": "https://voltaleltd.com/#service-cloud",
+          "name": "Cloud Infrastructure",
+          "description": "Scalable cloud architecture, database design, CI/CD pipelines, Kubernetes orchestration, and infrastructure-as-code.",
+          "provider": { "@id": "https://voltaleltd.com/#organization" },
+          "serviceType": "Cloud Infrastructure & DevOps"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
