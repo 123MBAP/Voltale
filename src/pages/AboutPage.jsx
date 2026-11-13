@@ -5,6 +5,7 @@ import SectionHeading from '../components/SectionHeading';
 import Footer from '../components/Footer';
 import TiltCard from '../components/TiltCard';
 import about1Img from '../assets/images/about1.png';
+import SEO from '../components/SEO';
 
 // Data definitions needed for the sections
 const industries = [
@@ -464,6 +465,15 @@ function TestimonialsSection() {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#F8F8F6] text-[#111111] pt-16">
+      <SEO
+        title="About Voltale | Technology & Cross-Domain Engineering in Rwanda"
+        description="Learn about Voltale's mission, values, and engineering approach. We combine physical computing, mechatronics, and scalable cloud intelligence to drive impact across Africa."
+        canonical="https://voltaleltd.com/about"
+        ogTitle="About Voltale | Engineering Integrated Digital Ecosystems"
+        ogDescription="Where physical computing meets cloud intelligence. Learn about our multidisciplinary engineering team in Kigali, Rwanda."
+        ogImage="https://voltaleltd.com/images/about-circuit.jpg"
+        keywords="About Voltale, Kigali technology company, engineering team Rwanda, IoT innovations, mechatronics, digital transformation"
+      />
       <AboutSection />
       <ApproachSection />
       <IndustriesSection />

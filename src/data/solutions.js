@@ -1,9 +1,11 @@
 export const solutions = [
   {
     index: '01',
-    title: 'Haficonnect.com',
+    title: 'Haficonnect',
     subtitle: 'Digital Marketplace & Services Hub',
-    text: 'A comprehensive digital platform connecting users with nearby service providers, a vibrant marketplace for buying and selling products, real estate listings, and made-in-Rwanda product discovery.',
+    eyebrow: 'Discover · Compare · Connect · Get What You Need',
+    heading: 'Everything You Need, Connected in One Place',
+    text: 'HafiConnect brings services, products, businesses, shops, and real estate opportunities together on one convenient platform. Discover service providers, browse new and second-hand products, explore premium shops, find properties to rent or buy, and support local businesses through Made in Rwanda products.',
     detail: 'Haficonnect.com is a multi-faceted digital platform designed to simplify everyday life. Whether you need to find a nearby salon, tailor, camera studio, or furniture store, Haficonnect makes it easy to discover and connect with local service providers. The integrated marketplace allows users to browse, buy, and sell products — including second-hand items — with seamless upload and listing features. Real estate enthusiasts can explore properties for rent or purchase, including land, commercial buildings, and other properties, with access to brokers, commission agents, and direct listings. Additionally, Haficonnect showcases Made in Rwanda products, enabling users to browse, compare prices and services, and place orders — all in one place.',
     features: [
       'Nearby service provider discovery',
@@ -19,14 +21,15 @@ export const solutions = [
     tagline: 'Your all-in-one digital marketplace and services hub.',
     color: '#4CAF50',
     links: [
-      { label: 'Services', href: 'https://haficonnect.vercel.app/services' },
-      { label: 'Marketplace', href: 'https://haficonnect.vercel.app/market' },
-      { label: 'Made in Rwanda', href: 'https://haficonnect.vercel.app/made-in-rwanda' },
-      { label: 'Real Estate', href: 'https://haficonnect.vercel.app/real-estate' },
-      { label: 'Updates', href: 'https://haficonnect.vercel.app/updates' },
+      { label: 'Services', href: 'https://haficonnect.voltaleltd.com/services' },
+      { label: 'Marketplace', href: 'https://haficonnect.voltaleltd.com/market' },
+      { label: 'Made in Rwanda', href: 'https://haficonnect.voltaleltd.com/made-in-rwanda' },
+      { label: 'Real Estate', href: 'https://haficonnect.voltaleltd.com/real-estate' },
+      { label: 'Updates', href: 'https://haficonnect.voltaleltd.com/updates' },
     ],
-    previewUrl: 'https://haficonnect.vercel.app',
+    previewUrl: 'https://haficonnect.voltaleltd.com',
   },
+  /*
   {
     index: '02',
     title: 'E-Nyandiko',
@@ -52,4 +55,5 @@ export const solutions = [
       { label: 'How It Works', href: 'https://enyandiko.vercel.app/how-it-works' },
     ],
   },
+  */
 ];

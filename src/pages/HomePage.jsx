@@ -8,6 +8,7 @@ import AnimatedHeroBackground from '../components/AnimatedHeroBackground';
 import TiltCard from '../components/TiltCard';
 import AnimatedCounter from '../components/AnimatedCounter';
 import MagneticButton from '../components/MagneticButton';
+import SEO from '../components/SEO';
 
 // Asset Imports
 import iot1Img from '../assets/images/iot1.png';
@@ -875,6 +876,15 @@ function ContactSection() {
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-ink antialiased">
+      <SEO
+        title="Voltale | Where Physical Computing Meets Scalable Cloud Intelligence"
+        description="Voltale is a technology and innovation company delivering IoT hardware, AI analytics, cloud platforms, infrastructure, and digital transformation solutions in Kigali, Rwanda."
+        canonical="https://voltaleltd.com/"
+        ogTitle="Voltale | Physical Computing & Cloud Intelligence"
+        ogDescription="Engineering integrated technological ecosystems. Uniting custom IoT hardware, cloud software, and applied AI in Kigali, Rwanda."
+        ogImage="https://voltaleltd.com/images/favicon.png"
+        keywords="Voltale, IoT architecture, cloud intelligence, mechatronics Rwanda, embedded systems, software engineering Kigali"
+      />
       <main>
         <Hero />
         <ParadigmSection />

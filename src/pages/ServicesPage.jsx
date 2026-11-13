@@ -3,6 +3,7 @@ import { services } from '../data/services';
 import Reveal from '../components/Reveal';
 import Footer from '../components/Footer';
 import MagneticButton from '../components/MagneticButton';
+import SEO from '../components/SEO';
 
 function ServiceModal({ service, onClose }) {
   if (!service) return null;
@@ -79,6 +80,15 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-[#F8F8F6] text-[#111111] pt-16">
+      <SEO
+        title="Engineering Services | Voltale — IoT, AI, Cloud & Software"
+        description="Explore Voltale's end-to-end engineering services: IoT architecture, mechatronics & automation, enterprise software development, cloud infrastructure, and AI analytics in Kigali, Rwanda."
+        canonical="https://voltaleltd.com/services"
+        ogTitle="Voltale Engineering Services | IoT, Cloud & Software"
+        ogDescription="Comprehensive technology services across five engineering domains: IoT hardware, enterprise platforms, cloud DevOps, mechatronics, and applied AI."
+        ogImage="https://voltaleltd.com/images/services-data.jpg"
+        keywords="IoT architecture Rwanda, enterprise software development Kigali, mechatronics, cloud infrastructure, AI analytics, embedded systems"
+      />
 
       <ServiceModal service={activeService} onClose={() => setActiveService(null)} />
 

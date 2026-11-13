@@ -105,12 +105,13 @@
           ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Voltale Core Services",
+            "name": "Voltale Core Services & Platforms",
             "itemListElement": [
               { "@id": "https://voltaleltd.com/#service-iot" },
               { "@id": "https://voltaleltd.com/#service-mechatronics" },
               { "@id": "https://voltaleltd.com/#service-software" },
-              { "@id": "https://voltaleltd.com/#service-cloud" }
+              { "@id": "https://voltaleltd.com/#service-cloud" },
+              { "@id": "https://voltaleltd.com/#haficonnect" }
             ]
           },
           "sameAs": [
@@ -194,6 +195,34 @@
           "description": "Scalable cloud architecture, database design, CI/CD pipelines, Kubernetes orchestration, and infrastructure-as-code.",
           "provider": { "@id": "https://voltaleltd.com/#organization" },
           "serviceType": "Cloud Infrastructure & DevOps"
+        },
+
+        {
+          "@type": "WebApplication",
+          "@id": "https://voltaleltd.com/#haficonnect",
+          "name": "HafiConnect",
+          "alternateName": "HafiConnect Marketplace & Services Hub",
+          "url": "https://haficonnect.voltaleltd.com",
+          "applicationCategory": "BusinessApplication, MarketplaceApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript. Requires HTML5.",
+          "creator": { "@id": "https://voltaleltd.com/#organization" },
+          "provider": { "@id": "https://voltaleltd.com/#organization" },
+          "description": "Multi-faceted digital platform connecting everyday clients with verified local service providers, an integrated marketplace for new and second-hand goods, Made in Rwanda products, and residential and commercial real estate.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "RWF"
+          },
+          "screenshot": "https://voltaleltd.com/images/haficonnect.jpg",
+          "featureList": [
+            "Nearby service provider discovery and direct booking",
+            "Integrated product marketplace with merchant storefronts",
+            "Second-hand goods trading",
+            "Residential and commercial real estate listings",
+            "Made in Rwanda product promotion",
+            "Real-time price comparison and online ordering"
+          ]
         }
       ]
     }

@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 import Reveal from '../components/Reveal';
 import Footer from '../components/Footer';
 import SocialLinks from '../components/SocialLinks';
+import SEO from '../components/SEO';
 
 const projectCategories = [
   { value: '', label: 'Select a project category…' },
@@ -189,6 +190,15 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#F8F8F6] text-[#111111] pt-16">
+      <SEO
+        title="Contact Voltale | Partner With Our Engineering Team"
+        description="Get in touch with Voltale's technology and engineering team in Kigali, Rwanda. Inquire about IoT hardware, cloud software development, automation, and enterprise systems."
+        canonical="https://voltaleltd.com/contact"
+        ogTitle="Contact Voltale | Start an Engineering Engagement"
+        ogDescription="Connect with Voltale. We engineer custom IoT architectures, enterprise cloud software, and digital platforms in Kigali, Rwanda."
+        ogImage="https://voltaleltd.com/images/favicon.png"
+        keywords="Contact Voltale, hire software developers Rwanda, IoT engineers Kigali, technology consulting Rwanda, contact info Voltale"
+      />
 
       {/* Page Header */}
       <section className="relative overflow-hidden pt-5 pb-5 sm:pt-7 sm:pb-7 border-b border-[#2B2B2B]/10">
